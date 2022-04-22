@@ -19,3 +19,9 @@ struct SubCharacterItem: Identifiable {
     let title: String
     let image: String
 }
+
+struct PunctuationCharacterItem: Identifiable {
+    let id = UUID()
+    let title: String
+    let image: String
+}
