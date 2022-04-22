@@ -88,7 +88,7 @@ struct MainGridItemView: View {
                     .foregroundColor(Color.black.opacity(0.9))
             }
             .frame(width: reader.size.width, height: reader.size.height)
-            .background(Color.white)
+            .background(ColorPalette.lightgray)
         }
         .frame(height:150)
         .clipShape(RoundedRectangle(cornerRadius: 20))
