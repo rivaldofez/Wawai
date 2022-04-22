@@ -32,6 +32,7 @@ struct MainCharacterView: View {
         MainCharacterItem(title: "Gha", image: "gha"),
     ]
     
+    @State private var showSubCharacterView = false
     @State private var numOfGridColumns = 4
     let gridSpacing: CGFloat = 10
     
@@ -45,13 +46,16 @@ struct MainCharacterView: View {
             
             VStack {
                 Text("Learn Lampungnese Main Character")
+                NavigationLink(destination: SubCharacterView(), isActive: self.$showSubCharacterView){
+                    Button(action:{
+                        self.showSubCharacterView = true
+                        print(self)
+                    }){
+                        Text("Next To Lampungnese Sub Character")
+                    }.buttonStyle(.bordered)
+                    
+                }
                 
-                Button(action:{
-                    
-                    
-                }){
-                    Text("Next To Lampungnese Sub Character")
-                }.buttonStyle(.bordered)
                 
                 LazyVGrid(columns: gridColumns, spacing: gridSpacing) {
                     ForEach(mainCharacters){ character in
