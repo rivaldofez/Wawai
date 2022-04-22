@@ -13,3 +13,9 @@ struct MainCharacterItem: Identifiable {
     let title: String
     let image: String
 }
+
+struct SubCharacterItem: Identifiable {
+    let id = UUID()
+    let title: String
+    let image: String
+}
