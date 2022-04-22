@@ -39,15 +39,31 @@ struct MainCharacterView: View {
     var body: some View {
         let gridColumns = Array(repeating: GridItem(), count: numOfGridColumns)
         
-        LazyVGrid(columns: gridColumns, spacing: gridSpacing) {
-            ForEach(mainCharacters){ character in
-                Button(action: {}){
-                    MainGridItemView(mainChar: character)
+        ZStack {
+            Image("back")
+                .resizable()
+            
+            VStack {
+                Text("Learn Lampungnese Main Character")
+                
+                Button(action:{
+                    
+                    
+                }){
+                    Text("Next To Lampungnese Sub Character")
+                }.buttonStyle(.bordered)
+                
+                LazyVGrid(columns: gridColumns, spacing: gridSpacing) {
+                    ForEach(mainCharacters){ character in
+                        Button(action: {}){
+                            MainGridItemView(mainChar: character)
+                        }
+                        .buttonStyle(MainGridButtonStyle(cornerRadius: 20))
+                    }
                 }
-                .buttonStyle(MainGridButtonStyle(cornerRadius: 20))
+                .padding(.horizontal)
             }
-        }
-        .padding(.horizontal)
+        }.ignoresSafeArea()
     }
 }
 
@@ -88,10 +104,13 @@ struct MainGridItemView: View {
                     .foregroundColor(Color.black.opacity(0.9))
             }
             .frame(width: reader.size.width, height: reader.size.height)
-            .background(ColorPalette.lightgray)
+            .background(ColorPalette.whitesmoke)
         }
         .frame(height:150)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
-        .shadow(color: Color.black.opacity(0.2), radius: 10, y: 5)
+        .overlay(RoundedRectangle(cornerRadius: 20).stroke(ColorPalette.khaki, lineWidth: 5))
+//        .border(ColorPalette.khaki, width: 2)
+//        .clipShape(RoundedRectangle(cornerRadius: 20))
+
+//        .shadow(color: Color.black.opacity(0.2), radius: 10, y: 5)
     }
 }
