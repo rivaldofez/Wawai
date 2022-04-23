@@ -8,11 +8,11 @@
 import SwiftUI
 struct ChoiceQuizView: View {
     var body: some View {
+        let gridColumns = Array(repeating: GridItem(), count: 2)
+        
         ZStack {
             Image("back")
                 .resizable()
-                .aspectRatio(contentMode: ContentMode.fill)
-                .ignoresSafeArea()
             
             VStack {
                 Text("Animal Knowledge Quiz")
@@ -29,6 +29,17 @@ struct ChoiceQuizView: View {
                     .frame(width: UIScreen.main.bounds.size.width - 20, height: 60, alignment: .center)
                     .multilineTextAlignment(.center)
                 
+                LazyVGrid(columns: gridColumns, spacing: 10) {
+                    
+                    ForEach(0..<4, id: \.self) {_ in
+                        Button(action: {}){
+                            ChoiceGridItemView()
+                        }
+                        .buttonStyle(ChoiceGridButtonStyle(cornerRadius: 20))
+                    
+                    }
+                }
+                .padding(.horizontal)
             }
         }
     }
@@ -53,7 +64,7 @@ struct ChoiceGridButtonStyle : ButtonStyle {
 }
 
 struct ChoiceGridItemView: View {
-    let mainChar : MainCharacterItem
+//    let mainChar : MainCharacterItem
     var body: some View {
         GeometryReader { reader in
             // make the ui more dynamic
@@ -61,14 +72,14 @@ struct ChoiceGridItemView: View {
             let imageWidth: CGFloat = min(100, reader.size.width * 0.6)
             
             VStack(spacing: 5){
-                Image(mainChar.image)
+                Image("ka")
                     .resizable()
                     .scaledToFit()
 //                    .foregroundColor(item.imgColor)
 //                    .shadow(color: Color(UIColor(red: 47/255, green: 47/255, blue: 47/255, alpha: 1)), radius: 1, x: 3, y: 2)
                     .frame(width: imageWidth)
                 
-                Text(mainChar.title)
+                Text("The power of love")
                     .font(.system(size: fontSize, weight: .bold, design: .rounded))
                     .foregroundColor(Color.black.opacity(0.9))
             }

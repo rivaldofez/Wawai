@@ -44,7 +44,6 @@ struct MainCharacterView: View {
         ZStack {
             Image("back")
                 .resizable()
-            
 
                 VStack {
                     Text("Learn Lampungnese Main Character")
