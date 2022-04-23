@@ -15,7 +15,7 @@ struct ExerciseCharacterView: View {
     @State private var thickness: Double = 5.0
     
     
-    var mainCharacter: MainCharacterItem
+    var mainCharacter: CharacterItem
     
     var body: some View {
         GeometryReader{reader in
@@ -117,7 +117,7 @@ struct ExerciseCharacterView: View {
                 }
                 
             }.ignoresSafeArea()
-                .navigationTitle("Learn Main Character")
+                .navigationTitle("Exercise Character")
         }
     }
 }

@@ -29,4 +29,63 @@ struct Constants{
     }
 }
 
+class SubCharacterBank {
+    var subCharacterList = [CharacterItem]()
+    init() {
+        subCharacterList.append(contentsOf: [
+            CharacterItem(title: "-i", image: "sb_i"),
+            CharacterItem(title: "-u", image: "sb_u"),
+            CharacterItem(title: "-e", image: "sb_e"),
+            CharacterItem(title: "-è", image: "sb_ee"),
+            CharacterItem(title: "-o", image: "sb_o"),
+            CharacterItem(title: "-ai", image: "sb_ai"),
+            CharacterItem(title: "-au", image: "sb_au"),
+            CharacterItem(title: "-r", image: "sb_r"),
+            CharacterItem(title: "-ng", image: "sb_ng"),
+            CharacterItem(title: "-n", image: "sb_n"),
+            CharacterItem(title: "-end", image: "sb_end")
+        ])
+    }
+}
 
+class PuncCharacterBank {
+    var puncCharacterList = [CharacterItem]()
+    init() {
+        puncCharacterList.append(contentsOf: [
+            CharacterItem(title: "Intro", image: "tb_intro"),
+            CharacterItem(title: "Comma", image: "tb_comma"),
+            CharacterItem(title: "Period", image: "tb_period"),
+            CharacterItem(title: "Question", image: "tb_question"),
+            CharacterItem(title: "Exclamation", image: "tb_exclamation"),
+            CharacterItem(title: "Quotation", image: "tb_quotation"),
+        ])
+    }
+}
+
+class MainCharacterBank {
+    var mainCharacterList = [CharacterItem]()
+    init() {
+        mainCharacterList.append(contentsOf: [
+            CharacterItem(title: "Ka", image: "ka"),
+            CharacterItem(title: "Ga", image: "ga"),
+            CharacterItem(title: "Nga", image: "nga"),
+            CharacterItem(title: "Pa", image: "pa"),
+            CharacterItem(title: "Ba", image: "ba"),
+            CharacterItem(title: "Ma", image: "ma"),
+            CharacterItem(title: "Ta", image: "ta"),
+            CharacterItem(title: "Da", image: "da"),
+            CharacterItem(title: "Na", image: "na"),
+            CharacterItem(title: "Ca", image: "ca"),
+            CharacterItem(title: "Ja", image: "ja"),
+            CharacterItem(title: "Nya", image: "nya"),
+            CharacterItem(title: "Ya", image: "ya"),
+            CharacterItem(title: "A", image: "a"),
+            CharacterItem(title: "La", image: "la"),
+            CharacterItem(title: "Ra", image: "ra"),
+            CharacterItem(title: "Sa", image: "sa"),
+            CharacterItem(title: "Wa", image: "wa"),
+            CharacterItem(title: "Ha", image: "ha"),
+            CharacterItem(title: "Gha", image: "gha"),
+        ])
+    }
+}

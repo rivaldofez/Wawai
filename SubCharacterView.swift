@@ -9,30 +9,8 @@ import SwiftUI
 
 
 struct SubCharacterView: View {
-    let subCharacters = [
-        SubCharacterItem(title: "-i", image: "sb_i"),
-        SubCharacterItem(title: "-u", image: "sb_u"),
-        SubCharacterItem(title: "-e", image: "sb_e"),
-        SubCharacterItem(title: "-è", image: "sb_ee"),
-        SubCharacterItem(title: "-o", image: "sb_o"),
-        SubCharacterItem(title: "-ai", image: "sb_ai"),
-        SubCharacterItem(title: "-au", image: "sb_au"),
-        SubCharacterItem(title: "-r", image: "sb_r"),
-        SubCharacterItem(title: "-ng", image: "sb_ng"),
-        SubCharacterItem(title: "-n", image: "sb_n"),
-        SubCharacterItem(title: "-end", image: "sb_end")
-    ]
-    
-    let punctuations = [
-        PunctuationCharacterItem(title: "Intro", image: "tb_intro"),
-        PunctuationCharacterItem(title: "Comma", image: "tb_comma"),
-        PunctuationCharacterItem(title: "Period", image: "tb_period"),
-        PunctuationCharacterItem(title: "Question", image: "tb_question"),
-        PunctuationCharacterItem(title: "Exclamation", image: "tb_exclamation"),
-        PunctuationCharacterItem(title: "Quotation", image: "tb_quotation"),
-    ]
-    
     @State private var showExerciseView = false
+    @State private var currentChar = MainCharacterBank().mainCharacterList[0]
     
     var body: some View {
         let gridColumns = Array(repeating: GridItem(), count: 3)
@@ -48,11 +26,18 @@ struct SubCharacterView: View {
                     .padding()
                 
                 LazyVGrid(columns: gridColumns, spacing: 10) {
-                    ForEach(subCharacters){ character in
-                        NavigationLink(destination: ExerciseCharacterView(isShow: self.$showExerciseView, mainCharacter: MainCharacterItem(title: character.title, image: character.image))){
-                            SubCharGridItemView(subChar: character)
+                    ForEach(SubCharacterBank().subCharacterList){ character in
+                        NavigationLink(destination: ExerciseCharacterView(isShow: self.$showExerciseView, mainCharacter: currentChar), isActive: self.$showExerciseView){
+                            
+                            Button(action: {
+                                currentChar = character
+                                self.showExerciseView = true
+                            }){
+                                GridItemView(character: character)
+                            }
+                            .buttonStyle(GridButtonStyle(cornerRadius: 20))
                         }
-                        .buttonStyle(MainGridButtonStyle(cornerRadius: 20))
+                        
                     }
                 }
                 .padding(.horizontal)
@@ -65,18 +50,17 @@ struct SubCharacterView: View {
                     .padding()
                 
                 LazyVGrid(columns: gridColumns, spacing: 10) {
-                    ForEach(punctuations){ punctuation in
-//                        Button(action: {}){
-//                            PunctuationGridItemView(punctuationChar: punctuation)
-//                        }
-//                        .buttonStyle(MainGridButtonStyle(cornerRadius: 20))
-                        
-                        NavigationLink(destination: ExerciseCharacterView(isShow: self.$showExerciseView, mainCharacter: MainCharacterItem(title: punctuation.title, image: punctuation.image))){
-                            PunctuationGridItemView(punctuationChar: punctuation)
+                    ForEach(PuncCharacterBank().puncCharacterList){ character in
+                        NavigationLink(destination: ExerciseCharacterView(isShow: self.$showExerciseView, mainCharacter: currentChar), isActive: self.$showExerciseView){
+                            
+                            Button(action: {
+                                currentChar = character
+                                self.showExerciseView = true
+                            }){
+                                GridItemView(character: character)
+                            }
+                            .buttonStyle(GridButtonStyle(cornerRadius: 20))
                         }
-                        .buttonStyle(MainGridButtonStyle(cornerRadius: 20))
-
-                        
                     }
                 }
                 .padding(.horizontal)
@@ -94,69 +78,7 @@ struct SubCharacterView_Previews: PreviewProvider {
     }
 }
 
-struct SubCharGridItemView: View {
-    let subChar : SubCharacterItem
-    var body: some View {
-        GeometryReader { reader in
-            // make the ui more dynamic
-            let fontSize = min(reader.size.width * 0.2, 28)
-            let imageWidth: CGFloat = min(100, reader.size.width * 0.6)
-            
-            VStack(spacing: 5){
-                Image(subChar.image)
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundColor(Constants.ColorPalette.khaki)
-                    .shadow(color: Color(UIColor(red: 47/255, green: 47/255, blue: 47/255, alpha: 1)), radius: 1, x: 3, y: 2)
-                    .frame(width: imageWidth)
-                
-                
-                Text(subChar.title)
-                    .font(.system(size: fontSize, weight: .bold, design: .rounded))
-                    .foregroundColor(Color.black.opacity(0.9))
-            }
-            .frame(width: reader.size.width, height: reader.size.height)
-            .background(Constants.ColorPalette.whitesmoke)
-        }
-        .frame(height:150)
-//        .border(Constants.ColorPalette.khaki, width: 2)
-//        .clipShape(RoundedRectangle(cornerRadius: 20))
-        .clipShape(RoundedRectangle(cornerRadius: 50))
-
-//        .shadow(color: Color.black.opacity(0.2), radius: 10, y: 5)
-    }
-}
 
 
-struct PunctuationGridItemView: View {
-    let punctuationChar : PunctuationCharacterItem
-    var body: some View {
-        GeometryReader { reader in
-            // make the ui more dynamic
-            let fontSize = min(reader.size.width * 0.2, 28)
-            let imageWidth: CGFloat = min(100, reader.size.width * 0.6)
-            
-            VStack(spacing: 5){
-                Spacer()
-                Image(punctuationChar.image)
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundColor(Constants.ColorPalette.khaki)
-                    .shadow(color: Color(UIColor(red: 47/255, green: 47/255, blue: 47/255, alpha: 1)), radius: 1, x: 3, y: 2)
-                    .frame(width: imageWidth)
-                Spacer()
-                Text(punctuationChar.title)
-                    .font(.system(size: fontSize, weight: .bold, design: .rounded))
-                    .foregroundColor(Color.black.opacity(0.9))
-                Spacer()
-            }
-            .frame(width: reader.size.width, height: reader.size.height)
-            .background(Constants.ColorPalette.whitesmoke)
-        }
-        .frame(height:150)
-//        .border(Constants.ColorPalette.khaki, width: 2)
-        .clipShape(RoundedRectangle(cornerRadius: 20))
 
-//        .shadow(color: Color.black.opacity(0.2), radius: 10, y: 5)
-    }
-}
+

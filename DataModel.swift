@@ -8,19 +8,7 @@
 import SwiftUI
 
 
-struct MainCharacterItem: Identifiable {
-    let id = UUID()
-    let title: String
-    let image: String
-}
-
-struct SubCharacterItem: Identifiable {
-    let id = UUID()
-    let title: String
-    let image: String
-}
-
-struct PunctuationCharacterItem: Identifiable {
+struct CharacterItem: Identifiable {
     let id = UUID()
     let title: String
     let image: String

@@ -9,75 +9,62 @@ import SwiftUI
 
 
 struct MainCharacterView: View {
-    let mainCharacters = [
-        MainCharacterItem(title: "Ka", image: "ka"),
-        MainCharacterItem(title: "Ga", image: "ga"),
-        MainCharacterItem(title: "Nga", image: "nga"),
-        MainCharacterItem(title: "Pa", image: "pa"),
-        MainCharacterItem(title: "Ba", image: "ba"),
-        MainCharacterItem(title: "Ma", image: "ma"),
-        MainCharacterItem(title: "Ta", image: "ta"),
-        MainCharacterItem(title: "Da", image: "da"),
-        MainCharacterItem(title: "Na", image: "na"),
-        MainCharacterItem(title: "Ca", image: "ca"),
-        MainCharacterItem(title: "Ja", image: "ja"),
-        MainCharacterItem(title: "Nya", image: "nya"),
-        MainCharacterItem(title: "Ya", image: "ya"),
-        MainCharacterItem(title: "A", image: "a"),
-        MainCharacterItem(title: "La", image: "la"),
-        MainCharacterItem(title: "Ra", image: "ra"),
-        MainCharacterItem(title: "Sa", image: "sa"),
-        MainCharacterItem(title: "Wa", image: "wa"),
-        MainCharacterItem(title: "Ha", image: "ha"),
-        MainCharacterItem(title: "Gha", image: "gha"),
-    ]
-    
     @State private var showSubCharacterView = false
     @State private var showChoiceQuizView = false
     @State private var showExerciseView = false
     @State private var numOfGridColumns = 4
+    @State private var currentChar = MainCharacterBank().mainCharacterList[0]
+    
     let gridSpacing: CGFloat = 10
     
     
     var body: some View {
         let gridColumns = Array(repeating: GridItem(), count: numOfGridColumns)
         
+        
         ZStack {
             Image("back")
                 .resizable()
-
-                VStack {
-                    Text("Lampungnese Main Character")
-                        .font(.system(.largeTitle,design: .rounded))
-                        .fontWeight(.bold)
-                        .padding()
-//                    NavigationLink(destination: SubCharacterView(), isActive: self.$showSubCharacterView){
-//                        Button(action:{
-//                            self.showSubCharacterView = true
-//                            print(self)
-//                        }){
-//                            Text("Next To Lampungnese Sub Character")
-//                        }.buttonStyle(.bordered)
-//
-//                    }
-//
-                    
-                    LazyVGrid(columns: gridColumns, spacing: gridSpacing) {
-                        ForEach(mainCharacters){ character in
-                            NavigationLink(destination: ExerciseCharacterView(isShow: self.$showExerciseView, mainCharacter: character)){
-                                MainGridItemView(mainChar: character)
+            
+            VStack {
+                Text("Lampungnese Main Character")
+                    .font(.system(.largeTitle,design: .rounded))
+                    .fontWeight(.bold)
+                    .padding()
+                //                    NavigationLink(destination: SubCharacterView(), isActive: self.$showSubCharacterView){
+                //                        Button(action:{
+                //                            self.showSubCharacterView = true
+                //                            print(self)
+                //                        }){
+                //                            Text("Next To Lampungnese Sub Character")
+                //                        }.buttonStyle(.bordered)
+                //
+                //                    }
+                //
+                
+                LazyVGrid(columns: gridColumns, spacing: gridSpacing) {
+                    ForEach(MainCharacterBank().mainCharacterList, id: \.id){ character in
+                        NavigationLink(destination: ExerciseCharacterView(isShow: self.$showExerciseView, mainCharacter: currentChar), isActive: self.$showExerciseView){
+                            
+                            Button(action: {
+                                currentChar = character
+                                self.showExerciseView = true
+                            }){
+                                GridItemView(character: character)
                             }
-                            .buttonStyle(MainGridButtonStyle(cornerRadius: 20))
+                            .buttonStyle(GridButtonStyle(cornerRadius: 20))
                         }
+                        
                     }
-                    .padding(.horizontal)
                 }
+                .padding(.horizontal)
+            }
             
         }.ignoresSafeArea()
     }
 }
 
-struct MainGridButtonStyle : ButtonStyle {
+struct GridButtonStyle : ButtonStyle {
     let cornerRadius: CGFloat
     
     func makeBody(configuration: Configuration) -> some View {
@@ -93,8 +80,8 @@ struct MainGridButtonStyle : ButtonStyle {
     }
 }
 
-struct MainGridItemView: View {
-    let mainChar : MainCharacterItem
+struct GridItemView: View {
+    let character : CharacterItem
     var body: some View {
         GeometryReader { reader in
             // make the ui more dynamic
@@ -102,14 +89,14 @@ struct MainGridItemView: View {
             let imageWidth: CGFloat = min(100, reader.size.width * 0.6)
             
             VStack(spacing: 5){
-                Image(mainChar.image)
+                Image(character.image)
                     .resizable()
                     .scaledToFit()
                     .foregroundColor(Constants.ColorPalette.khaki)
                     .shadow(color: Color(UIColor(red: 47/255, green: 47/255, blue: 47/255, alpha: 1)), radius: 1, x: 3, y: 2)
                     .frame(width: imageWidth)
                 
-                Text(mainChar.title)
+                Text(character.title)
                     .font(.system(size: fontSize, weight: .bold, design: .rounded))
                     .foregroundColor(Color.black.opacity(0.9))
             }
@@ -117,10 +104,10 @@ struct MainGridItemView: View {
             .background(Constants.ColorPalette.whitesmoke)
         }
         .frame(height:150)
-//        .overlay(RoundedRectangle(cornerRadius: 50).stroke(Constants.ColorPalette.khaki, lineWidth: 5))
-//        .border(Constants.ColorPalette.khaki, width: 2)
+        //        .overlay(RoundedRectangle(cornerRadius: 50).stroke(Constants.ColorPalette.khaki, lineWidth: 5))
+        //        .border(Constants.ColorPalette.khaki, width: 2)
         .clipShape(RoundedRectangle(cornerRadius: 50))
-
-//        .shadow(color: Color.black.opacity(0.2), radius: 10, y: 5)
+        
+        //        .shadow(color: Color.black.opacity(0.2), radius: 10, y: 5)
     }
 }
