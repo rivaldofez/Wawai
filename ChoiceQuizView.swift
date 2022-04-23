@@ -7,6 +7,11 @@
 
 import SwiftUI
 struct ChoiceQuizView: View {
+    
+    @State var i : Int = 0
+    @State var score : Int = 0
+    
+    
     var body: some View {
         let gridColumns = Array(repeating: GridItem(), count: 2)
         
@@ -14,32 +19,41 @@ struct ChoiceQuizView: View {
             Image("back")
                 .resizable()
             
-            VStack {
-                Text("Animal Knowledge Quiz")
-                    .font(.system(size: 30, weight: .bold, design: .rounded))
-                    .foregroundColor(.black)
-                    .shadow(color: Constants.ColorPalette.khaki, radius: 2, x: 0, y: 3)
-                    .padding()
-                
-                Text("Apa maksud dari")
-                    .font(.system(size: 25, weight: .bold, design: .rounded))
-                    .foregroundColor(.white)
-                    .shadow(color: .purple, radius: 2, x: 0, y: 3)
-                    .lineLimit(3)
-                    .frame(width: UIScreen.main.bounds.size.width - 20, height: 60, alignment: .center)
-                    .multilineTextAlignment(.center)
-                
-                LazyVGrid(columns: gridColumns, spacing: 10) {
+            if(self.i < ChoiceQuizQuestionBank().questionList.count){
+                VStack {
+                    Text("Animal Knowledge Quiz")
+                        .font(.system(size: 30, weight: .bold, design: .rounded))
+                        .foregroundColor(.black)
+                        .shadow(color: Constants.ColorPalette.khaki, radius: 2, x: 0, y: 3)
+                        .padding()
                     
-                    ForEach(0..<4, id: \.self) {_ in
-                        Button(action: {}){
-                            ChoiceGridItemView()
+                    Text("Apa maksud dari")
+                        .font(.system(size: 25, weight: .bold, design: .rounded))
+                        .foregroundColor(.white)
+                        .shadow(color: .purple, radius: 2, x: 0, y: 3)
+                        .lineLimit(3)
+                        .frame(width: UIScreen.main.bounds.size.width - 20, height: 60, alignment: .center)
+                        .multilineTextAlignment(.center)
+                    
+                    LazyVGrid(columns: gridColumns, spacing: 10) {
+                        
+                        ForEach(0..<4, id: \.self) {_ in
+                            Button(action: {}){
+                                ChoiceGridItemView()
+                            }
+                            .buttonStyle(ChoiceGridButtonStyle(cornerRadius: 20))
+                        
                         }
-                        .buttonStyle(ChoiceGridButtonStyle(cornerRadius: 20))
+                    }
+                    .padding(.horizontal)
                     
+                    
+                    Button(action:{
+                        self.i += 1
+                    }){
+                        Text("Next")
                     }
                 }
-                .padding(.horizontal)
             }
         }
     }

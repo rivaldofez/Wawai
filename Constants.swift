@@ -91,7 +91,7 @@ class MainCharacterBank {
 }
 
 
-class ChoiceQuizQuestion {
+class ChoiceQuizQuestionBank {
     var questionList = [ChoiceQuiz]()
     
     init() {
