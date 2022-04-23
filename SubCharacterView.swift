@@ -39,7 +39,11 @@ struct SubCharacterView: View {
                 .resizable()
             
             VStack {
-                Text("Learn Lampungnese Sub Character")
+                Spacer()
+                Text("Lampungnese Main Character")
+                    .font(.system(.largeTitle,design: .rounded))
+                    .fontWeight(.bold)
+                    .padding()
                 
                 LazyVGrid(columns: gridColumns, spacing: 10) {
                     ForEach(subCharacters){ character in
@@ -51,7 +55,12 @@ struct SubCharacterView: View {
                 }
                 .padding(.horizontal)
                 
-                Text("Learn Lampungnese Punctuation")
+                Spacer()
+                
+                Text("Lampungnese Main Character")
+                    .font(.system(.largeTitle,design: .rounded))
+                    .fontWeight(.bold)
+                    .padding()
                 
                 LazyVGrid(columns: gridColumns, spacing: 10) {
                     ForEach(punctuations){ punctuation in
@@ -62,6 +71,8 @@ struct SubCharacterView: View {
                     }
                 }
                 .padding(.horizontal)
+                
+                Spacer()
             }
         }.ignoresSafeArea()
         
@@ -86,9 +97,10 @@ struct SubCharGridItemView: View {
                 Image(subChar.image)
                     .resizable()
                     .scaledToFit()
-//                    .foregroundColor(item.imgColor)
-//                    .shadow(color: Color(UIColor(red: 47/255, green: 47/255, blue: 47/255, alpha: 1)), radius: 1, x: 3, y: 2)
+                    .foregroundColor(Constants.ColorPalette.khaki)
+                    .shadow(color: Color(UIColor(red: 47/255, green: 47/255, blue: 47/255, alpha: 1)), radius: 1, x: 3, y: 2)
                     .frame(width: imageWidth)
+                
                 
                 Text(subChar.title)
                     .font(.system(size: fontSize, weight: .bold, design: .rounded))
@@ -98,9 +110,9 @@ struct SubCharGridItemView: View {
             .background(Constants.ColorPalette.whitesmoke)
         }
         .frame(height:150)
-        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Constants.ColorPalette.khaki, lineWidth: 5))
 //        .border(Constants.ColorPalette.khaki, width: 2)
 //        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .clipShape(RoundedRectangle(cornerRadius: 50))
 
 //        .shadow(color: Color.black.opacity(0.2), radius: 10, y: 5)
     }
@@ -119,8 +131,8 @@ struct PunctuationGridItemView: View {
                 Image(punctuationChar.image)
                     .resizable()
                     .scaledToFit()
-//                    .foregroundColor(item.imgColor)
-//                    .shadow(color: Color(UIColor(red: 47/255, green: 47/255, blue: 47/255, alpha: 1)), radius: 1, x: 3, y: 2)
+                    .foregroundColor(Constants.ColorPalette.khaki)
+                    .shadow(color: Color(UIColor(red: 47/255, green: 47/255, blue: 47/255, alpha: 1)), radius: 1, x: 3, y: 2)
                     .frame(width: imageWidth)
                 
                 Text(punctuationChar.title)
@@ -131,9 +143,8 @@ struct PunctuationGridItemView: View {
             .background(Constants.ColorPalette.whitesmoke)
         }
         .frame(height:150)
-        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Constants.ColorPalette.khaki, lineWidth: 5))
 //        .border(Constants.ColorPalette.khaki, width: 2)
-//        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .clipShape(RoundedRectangle(cornerRadius: 20))
 
 //        .shadow(color: Color.black.opacity(0.2), radius: 10, y: 5)
     }
