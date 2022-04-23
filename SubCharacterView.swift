@@ -32,6 +32,8 @@ struct SubCharacterView: View {
         PunctuationCharacterItem(title: "Quotation", image: "tb_quotation"),
     ]
     
+    @State private var showExerciseView = false
+    
     var body: some View {
         let gridColumns = Array(repeating: GridItem(), count: 3)
         ZStack {
@@ -47,7 +49,7 @@ struct SubCharacterView: View {
                 
                 LazyVGrid(columns: gridColumns, spacing: 10) {
                     ForEach(subCharacters){ character in
-                        Button(action: {}){
+                        NavigationLink(destination: ExerciseCharacterView(isShow: self.$showExerciseView, mainCharacter: MainCharacterItem(title: character.title, image: character.image))){
                             SubCharGridItemView(subChar: character)
                         }
                         .buttonStyle(MainGridButtonStyle(cornerRadius: 20))
@@ -64,10 +66,17 @@ struct SubCharacterView: View {
                 
                 LazyVGrid(columns: gridColumns, spacing: 10) {
                     ForEach(punctuations){ punctuation in
-                        Button(action: {}){
+//                        Button(action: {}){
+//                            PunctuationGridItemView(punctuationChar: punctuation)
+//                        }
+//                        .buttonStyle(MainGridButtonStyle(cornerRadius: 20))
+                        
+                        NavigationLink(destination: ExerciseCharacterView(isShow: self.$showExerciseView, mainCharacter: MainCharacterItem(title: punctuation.title, image: punctuation.image))){
                             PunctuationGridItemView(punctuationChar: punctuation)
                         }
                         .buttonStyle(MainGridButtonStyle(cornerRadius: 20))
+
+                        
                     }
                 }
                 .padding(.horizontal)
@@ -128,16 +137,18 @@ struct PunctuationGridItemView: View {
             let imageWidth: CGFloat = min(100, reader.size.width * 0.6)
             
             VStack(spacing: 5){
+                Spacer()
                 Image(punctuationChar.image)
                     .resizable()
                     .scaledToFit()
                     .foregroundColor(Constants.ColorPalette.khaki)
                     .shadow(color: Color(UIColor(red: 47/255, green: 47/255, blue: 47/255, alpha: 1)), radius: 1, x: 3, y: 2)
                     .frame(width: imageWidth)
-                
+                Spacer()
                 Text(punctuationChar.title)
                     .font(.system(size: fontSize, weight: .bold, design: .rounded))
                     .foregroundColor(Color.black.opacity(0.9))
+                Spacer()
             }
             .frame(width: reader.size.width, height: reader.size.height)
             .background(Constants.ColorPalette.whitesmoke)

@@ -64,19 +64,10 @@ struct MainCharacterView: View {
                     
                     LazyVGrid(columns: gridColumns, spacing: gridSpacing) {
                         ForEach(mainCharacters){ character in
-                            NavigationLink(destination: ExerciseCharacterView(isShow: self.$showExerciseView, mainCharacter: character), isActive: self.$showExerciseView){
-
-                                Button(action: {
-                                    self.showExerciseView = true
-                                }){
-                                    MainGridItemView(mainChar: character)
-                                }
-                                .buttonStyle(MainGridButtonStyle(cornerRadius: 20))
+                            NavigationLink(destination: ExerciseCharacterView(isShow: self.$showExerciseView, mainCharacter: character)){
+                                MainGridItemView(mainChar: character)
                             }
-                            
-//                            NavigationLink(destination: ExerciseCharacterView(isShow: self.$showExerciseView, mainCharacter: character)){
-//                                MainGridItemView(mainChar: character)
-//                            }
+                            .buttonStyle(MainGridButtonStyle(cornerRadius: 20))
                         }
                     }
                     .padding(.horizontal)
