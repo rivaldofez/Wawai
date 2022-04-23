@@ -14,7 +14,7 @@ struct CharacterItem: Identifiable {
     let image: String
 }
 
-struct MultipleChoice {
+struct Choice {
     let choiceA : String
     let choiceB : String
     let choiceC : String
@@ -25,4 +25,12 @@ struct Line {
     var points = [CGPoint]()
     var color: Color = .red
     var lineWidth: Double = 5.0
+}
+
+
+struct ChoiceQuiz {
+    let img: String
+    var question: String
+    var answer: String
+    var choice: Choice
 }

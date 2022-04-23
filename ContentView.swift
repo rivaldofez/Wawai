@@ -3,8 +3,9 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            SubCharacterView()
+//            SubCharacterView()
 //            MainCharacterView()
+            ChoiceQuizView()
         }.navigationViewStyle(.stack)
     }
 }

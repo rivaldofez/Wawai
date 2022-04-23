@@ -89,16 +89,18 @@ struct GridItemView: View {
             let imageWidth: CGFloat = min(100, reader.size.width * 0.6)
             
             VStack(spacing: 5){
+                Spacer()
                 Image(character.image)
                     .resizable()
                     .scaledToFit()
                     .foregroundColor(Constants.ColorPalette.khaki)
                     .shadow(color: Color(UIColor(red: 47/255, green: 47/255, blue: 47/255, alpha: 1)), radius: 1, x: 3, y: 2)
                     .frame(width: imageWidth)
-                
+                Spacer()
                 Text(character.title)
                     .font(.system(size: fontSize, weight: .bold, design: .rounded))
                     .foregroundColor(Color.black.opacity(0.9))
+                Spacer()
             }
             .frame(width: reader.size.width, height: reader.size.height)
             .background(Constants.ColorPalette.whitesmoke)
