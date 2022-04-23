@@ -44,29 +44,31 @@ struct MainCharacterView: View {
             Image("back")
                 .resizable()
             
-            VStack {
-                Text("Learn Lampungnese Main Character")
-                NavigationLink(destination: SubCharacterView(), isActive: self.$showSubCharacterView){
-                    Button(action:{
-                        self.showSubCharacterView = true
-                        print(self)
-                    }){
-                        Text("Next To Lampungnese Sub Character")
-                    }.buttonStyle(.bordered)
-                    
-                }
-                
-                
-                LazyVGrid(columns: gridColumns, spacing: gridSpacing) {
-                    ForEach(mainCharacters){ character in
-                        Button(action: {}){
-                            MainGridItemView(mainChar: character)
-                        }
-                        .buttonStyle(MainGridButtonStyle(cornerRadius: 20))
+
+                VStack {
+                    Text("Learn Lampungnese Main Character")
+                    NavigationLink(destination: SubCharacterView(), isActive: self.$showSubCharacterView){
+                        Button(action:{
+                            self.showSubCharacterView = true
+                            print(self)
+                        }){
+                            Text("Next To Lampungnese Sub Character")
+                        }.buttonStyle(.bordered)
+                        
                     }
+                    
+                    
+                    LazyVGrid(columns: gridColumns, spacing: gridSpacing) {
+                        ForEach(mainCharacters){ character in
+                            Button(action: {}){
+                                MainGridItemView(mainChar: character)
+                            }
+                            .buttonStyle(MainGridButtonStyle(cornerRadius: 20))
+                        }
+                    }
+                    .padding(.horizontal)
                 }
-                .padding(.horizontal)
-            }
+            
         }.ignoresSafeArea()
     }
 }
@@ -82,7 +84,7 @@ struct MainGridButtonStyle : ButtonStyle {
                 Color.black.opacity(0.2)
             }
         }
-        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .clipShape(RoundedRectangle(cornerRadius: 50))
         .shadow(color: Color.black.opacity(0.2), radius: 10, y: 5)
     }
 }
@@ -111,9 +113,9 @@ struct MainGridItemView: View {
             .background(ColorPalette.whitesmoke)
         }
         .frame(height:150)
-        .overlay(RoundedRectangle(cornerRadius: 20).stroke(ColorPalette.khaki, lineWidth: 5))
+//        .overlay(RoundedRectangle(cornerRadius: 50).stroke(ColorPalette.khaki, lineWidth: 5))
 //        .border(ColorPalette.khaki, width: 2)
-//        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .clipShape(RoundedRectangle(cornerRadius: 50))
 
 //        .shadow(color: Color.black.opacity(0.2), radius: 10, y: 5)
     }
