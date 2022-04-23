@@ -107,8 +107,9 @@ struct MainGridItemView: View {
                 Image(mainChar.image)
                     .resizable()
                     .scaledToFit()
+                    .foregroundColor(Constants.ColorPalette.khaki)
 //                    .foregroundColor(item.imgColor)
-//                    .shadow(color: Color(UIColor(red: 47/255, green: 47/255, blue: 47/255, alpha: 1)), radius: 1, x: 3, y: 2)
+                    .shadow(color: Color(UIColor(red: 47/255, green: 47/255, blue: 47/255, alpha: 1)), radius: 1, x: 3, y: 2)
                     .frame(width: imageWidth)
                 
                 Text(mainChar.title)
