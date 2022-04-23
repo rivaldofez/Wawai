@@ -74,7 +74,7 @@ struct ColorPickerView: View {
             ForEach(colors, id: \.self){ color in
                 Image(systemName: selectedColor == color ? Constants.Icons.recordCircleFill: Constants.Icons.circleFill)
                     .foregroundColor(color)
-                    .font(.system(size: 16))
+                    .font(.system(size: 25))
                     .clipShape(Circle())
                     .onTapGesture {
                         selectedColor = color
