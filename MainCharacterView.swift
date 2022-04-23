@@ -34,6 +34,7 @@ struct MainCharacterView: View {
     
     @State private var showSubCharacterView = false
     @State private var showChoiceQuizView = false
+    @State private var showExerciseView = false
     @State private var numOfGridColumns = 4
     let gridSpacing: CGFloat = 10
     
@@ -46,30 +47,36 @@ struct MainCharacterView: View {
                 .resizable()
 
                 VStack {
-                    Text("Learn Lampungnese Main Character")
-                    NavigationLink(destination: SubCharacterView(), isActive: self.$showSubCharacterView){
-                        Button(action:{
-                            self.showSubCharacterView = true
-                            print(self)
-                        }){
-                            Text("Next To Lampungnese Sub Character")
-                        }.buttonStyle(.bordered)
-                        
-                    }
-                    
+                    Text("Lampungnese Main Character")
+                        .font(.system(.largeTitle,design: .rounded))
+                        .fontWeight(.bold)
+                        .padding()
+//                    NavigationLink(destination: SubCharacterView(), isActive: self.$showSubCharacterView){
+//                        Button(action:{
+//                            self.showSubCharacterView = true
+//                            print(self)
+//                        }){
+//                            Text("Next To Lampungnese Sub Character")
+//                        }.buttonStyle(.bordered)
+//
+//                    }
+//
                     
                     LazyVGrid(columns: gridColumns, spacing: gridSpacing) {
                         ForEach(mainCharacters){ character in
-                            NavigationLink(destination: ChoiceQuizView(), isActive: self.$showChoiceQuizView){
-                                
+                            NavigationLink(destination: ExerciseCharacterView(isShow: self.$showExerciseView, mainCharacter: character), isActive: self.$showExerciseView){
+
                                 Button(action: {
-                                    self.showChoiceQuizView = true
-                                    
+                                    self.showExerciseView = true
                                 }){
                                     MainGridItemView(mainChar: character)
                                 }
                                 .buttonStyle(MainGridButtonStyle(cornerRadius: 20))
                             }
+                            
+//                            NavigationLink(destination: ExerciseCharacterView(isShow: self.$showExerciseView, mainCharacter: character)){
+//                                MainGridItemView(mainChar: character)
+//                            }
                         }
                     }
                     .padding(.horizontal)
