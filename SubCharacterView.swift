@@ -95,11 +95,11 @@ struct SubCharGridItemView: View {
                     .foregroundColor(Color.black.opacity(0.9))
             }
             .frame(width: reader.size.width, height: reader.size.height)
-            .background(ColorPalette.whitesmoke)
+            .background(Constants.ColorPalette.whitesmoke)
         }
         .frame(height:150)
-        .overlay(RoundedRectangle(cornerRadius: 20).stroke(ColorPalette.khaki, lineWidth: 5))
-//        .border(ColorPalette.khaki, width: 2)
+        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Constants.ColorPalette.khaki, lineWidth: 5))
+//        .border(Constants.ColorPalette.khaki, width: 2)
 //        .clipShape(RoundedRectangle(cornerRadius: 20))
 
 //        .shadow(color: Color.black.opacity(0.2), radius: 10, y: 5)
@@ -128,11 +128,11 @@ struct PunctuationGridItemView: View {
                     .foregroundColor(Color.black.opacity(0.9))
             }
             .frame(width: reader.size.width, height: reader.size.height)
-            .background(ColorPalette.whitesmoke)
+            .background(Constants.ColorPalette.whitesmoke)
         }
         .frame(height:150)
-        .overlay(RoundedRectangle(cornerRadius: 20).stroke(ColorPalette.khaki, lineWidth: 5))
-//        .border(ColorPalette.khaki, width: 2)
+        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Constants.ColorPalette.khaki, lineWidth: 5))
+//        .border(Constants.ColorPalette.khaki, width: 2)
 //        .clipShape(RoundedRectangle(cornerRadius: 20))
 
 //        .shadow(color: Color.black.opacity(0.2), radius: 10, y: 5)

@@ -116,11 +116,11 @@ struct MainGridItemView: View {
                     .foregroundColor(Color.black.opacity(0.9))
             }
             .frame(width: reader.size.width, height: reader.size.height)
-            .background(ColorPalette.whitesmoke)
+            .background(Constants.ColorPalette.whitesmoke)
         }
         .frame(height:150)
-//        .overlay(RoundedRectangle(cornerRadius: 50).stroke(ColorPalette.khaki, lineWidth: 5))
-//        .border(ColorPalette.khaki, width: 2)
+//        .overlay(RoundedRectangle(cornerRadius: 50).stroke(Constants.ColorPalette.khaki, lineWidth: 5))
+//        .border(Constants.ColorPalette.khaki, width: 2)
         .clipShape(RoundedRectangle(cornerRadius: 50))
 
 //        .shadow(color: Color.black.opacity(0.2), radius: 10, y: 5)
