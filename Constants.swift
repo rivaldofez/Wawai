@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct ColorPalette {
     static let khaki = Color(red: 255/255, green: 203/255, blue: 116/255)
     static let deepgray = Color(red: 46/255, green: 46/255, blue: 46/255)

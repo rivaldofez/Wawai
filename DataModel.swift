@@ -5,7 +5,7 @@
 //  Created by Rivaldo Fernandes on 23/04/22.
 //
 
-import Foundation
+import SwiftUI
 
 
 struct MainCharacterItem: Identifiable {
@@ -31,4 +31,10 @@ struct MultipleChoice {
     let choiceB : String
     let choiceC : String
     let choiceD : String
+}
+
+struct Line {
+    var points = [CGPoint]()
+    var color: Color = .black
+    var lineWidth: Double = 1.0
 }
