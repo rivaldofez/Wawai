@@ -89,3 +89,17 @@ class MainCharacterBank {
         ])
     }
 }
+
+
+class ChoiceQuizQuestion {
+    var questionList = [ChoiceQuiz]()
+    
+    init() {
+        questionList.append(contentsOf: [
+            ChoiceQuiz(img: "ka", question: "Ka adalah", answer: "a", choice: Choice(choiceA: "Ka", choiceB: "Kb", choiceC: "Kc", choiceD: "Kd")),
+            ChoiceQuiz(img: "ga", question: "Ga adalah", answer: "b", choice: Choice(choiceA: "Ka", choiceB: "Kb", choiceC: "Kc", choiceD: "Kd")),
+            ChoiceQuiz(img: "nga", question: "Nga adalah", answer: "c", choice: Choice(choiceA: "Ka", choiceB: "Kb", choiceC: "Kc", choiceD: "Kd"))
+            
+        ])
+    }
+}
