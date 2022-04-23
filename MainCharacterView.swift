@@ -33,6 +33,7 @@ struct MainCharacterView: View {
     ]
     
     @State private var showSubCharacterView = false
+    @State private var showChoiceQuizView = false
     @State private var numOfGridColumns = 4
     let gridSpacing: CGFloat = 10
     
@@ -60,10 +61,16 @@ struct MainCharacterView: View {
                     
                     LazyVGrid(columns: gridColumns, spacing: gridSpacing) {
                         ForEach(mainCharacters){ character in
-                            Button(action: {}){
-                                MainGridItemView(mainChar: character)
+                            NavigationLink(destination: ChoiceQuizView(), isActive: self.$showChoiceQuizView){
+                                
+                                Button(action: {
+                                    self.showChoiceQuizView = true
+                                    
+                                }){
+                                    MainGridItemView(mainChar: character)
+                                }
+                                .buttonStyle(MainGridButtonStyle(cornerRadius: 20))
                             }
-                            .buttonStyle(MainGridButtonStyle(cornerRadius: 20))
                         }
                     }
                     .padding(.horizontal)

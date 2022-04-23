@@ -25,3 +25,10 @@ struct PunctuationCharacterItem: Identifiable {
     let title: String
     let image: String
 }
+
+struct MultipleChoice {
+    let choiceA : String
+    let choiceB : String
+    let choiceC : String
+    let choiceD : String
+}
