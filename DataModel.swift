@@ -35,3 +35,9 @@ struct ChoiceItem: Identifiable {
     let itemColor: Color
 }
 
+struct DrawQuiz: Identifiable {
+    let id = UUID()
+    let img: String
+    let answer: String
+}
+

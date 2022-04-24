@@ -14,6 +14,8 @@ struct ExerciseCharacterView: View {
     @State private var selectedColor: Color = .red
     @State private var thickness: Double = 5.0
     
+    @State var indexQuestion : Int = 0
+    @State var score : Int = 0
     
     var mainCharacter: CharacterItem
     
@@ -58,10 +60,6 @@ struct ExerciseCharacterView: View {
                                     })
                             )
                             .clipShape(RoundedRectangle(cornerRadius: 30))
-                        //                    .mask{
-                        //                        Image("ca")
-                        //                            .resizable()
-                        //                    }
                     }
                     
                     HStack {

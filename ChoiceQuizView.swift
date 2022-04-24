@@ -72,8 +72,6 @@ struct ChoiceQuizView: View {
             }
             .navigationTitle("Multiple Choice Quiz")
             .navigationBarBackButtonHidden(true)
-            
-            
         }
     }
 }
