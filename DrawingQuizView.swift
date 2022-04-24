@@ -15,6 +15,9 @@ struct DrawingQuizView: View {
     @State private var thickness: Double = 0.0
     @State private var answerField: String = ""
     
+    @State var indexQuestion: Int = 0
+    
+    
     var body: some View {
         
         GeometryReader{reader in
@@ -22,109 +25,125 @@ struct DrawingQuizView: View {
                 Image("back")
                     .resizable()
                 
-                VStack {
-                    Text("Scratch The Canvas and Guest the Character")
-                        .font(.system(size: 30, weight: .bold, design: .rounded))
-                        .foregroundColor(.black)
-                        .shadow(color: Constants.ColorPalette.khaki, radius: 2, x: 0, y: 3)
-                        .padding()
-                    
-                    ZStack {
-                        Canvas { context, size in
-                            for line in lines {
-                                var path = Path()
-                                path.addLines(line.points)
-                                //                        context.stroke(path, with: .color(line.color), lineWidth: line.lineWidth)
-                                context.stroke(path, with: .color(line.color), style: StrokeStyle(lineWidth: line.lineWidth, lineCap: .round))
-                            }
-                        }.frame(width: reader.size.width * 0.5, height: reader.size.height * 0.5)
-                            .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                                .onChanged({value in
-                                    let newPoint = value.location
-                                    currentLine.points.append(newPoint)
-                                    self.lines.append(currentLine)
-                                })
-                                    .onEnded({Value in
-                                        self.lines.append(currentLine)
-                                        self.currentLine = Line(points: [], color: selectedColor, lineWidth: thickness)
-                                    })
-                            )
-                            .mask {
-                                Image("ka")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: reader.size.width * 0.5, height: reader.size.width * 0.5)
-                            }
-                    }
-                    
-                    HStack {
-                        HStack {
-                            Text("Thickness")
-                                .font(.system(.title2, design: .rounded))
-                                .fontWeight(.bold)
-                            Slider(value: $thickness, in: 1...20){
-                            }.frame(maxWidth: 100)
-                                .onChange(of: thickness){newThickness in
-                                    currentLine.lineWidth = newThickness
+                if(self.indexQuestion < DrawingQuestionBank().questionList.count){
+                    let currentQuestion = DrawingQuestionBank().questionList[indexQuestion]
+                    VStack {
+                        Text("Scratch The Canvas and Guest the Character")
+                            .font(.system(size: 30, weight: .bold, design: .rounded))
+                            .foregroundColor(.black)
+                            .shadow(color: Constants.ColorPalette.khaki, radius: 2, x: 0, y: 3)
+                            .padding()
+                        
+                        ZStack {
+                            Canvas { context, size in
+                                for line in lines {
+                                    var path = Path()
+                                    path.addLines(line.points)
+                                    //                        context.stroke(path, with: .color(line.color), lineWidth: line.lineWidth)
+                                    context.stroke(path, with: .color(line.color), style: StrokeStyle(lineWidth: line.lineWidth, lineCap: .round))
                                 }
-                            
+                            }.frame(width: reader.size.width * 0.5, height: reader.size.height * 0.5)
+                                .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                                    .onChanged({value in
+                                        let newPoint = value.location
+                                        currentLine.points.append(newPoint)
+                                        self.lines.append(currentLine)
+                                    })
+                                        .onEnded({Value in
+                                            self.lines.append(currentLine)
+                                            self.currentLine = Line(points: [], color: selectedColor, lineWidth: thickness)
+                                        })
+                                )
+                                .mask {
+                                    Image(currentQuestion.img)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: reader.size.width * 0.5, height: reader.size.width * 0.5)
+                                }
                         }
-                        .padding(10)
-                        .background(Constants.ColorPalette.whitesmoke)
-                        .clipShape(Capsule())
                         
                         HStack {
-                            ColorPickerView(selectedColor: $selectedColor).onChange(of: selectedColor){ newColor in
-                                currentLine.color = newColor
+                            HStack {
+                                Text("Thickness")
+                                    .font(.system(.title2, design: .rounded))
+                                    .fontWeight(.bold)
+                                Slider(value: $thickness, in: 1...20){
+                                }.frame(maxWidth: 100)
+                                    .onChange(of: thickness){newThickness in
+                                        currentLine.lineWidth = newThickness
+                                    }
+                                
                             }
-                        }
-                        .padding(10)
-                        .background(Constants.ColorPalette.whitesmoke)
-                        .clipShape(Capsule())
-                        
-                        
-                        Button(action: {
-                            self.lines = []
-                            self.currentLine = Line(points: [], color: selectedColor, lineWidth: thickness)
-                        }){
-                            Text("Clear")
-                                .font(.system(.title2, design: .rounded))
-                                .fontWeight(.bold)
-                        }
-                        .padding(10)
-                        .background(Constants.ColorPalette.whitesmoke)
-                        .clipShape(Capsule())
-                    }
-                    
-                    
-                    HStack(alignment: .center) {
-                        TextField("Drop Your Answer Here", text: self.$answerField)
-                            .onSubmit {
-                                print("Answer \(answerField)")
-                            }
-                            .frame(width: reader.size.width * 0.4, height: 30)
                             .padding(10)
                             .background(Constants.ColorPalette.whitesmoke)
                             .clipShape(Capsule())
-                        
-                        Button(action: {
-                            print("Answer \(answerField)")
-                        }){
-                            Text("Submit")
-                                .font(.system(.title2, design: .rounded))
-                                .foregroundColor(.white)
-                                .fontWeight(.bold)
+                            
+                            HStack {
+                                ColorPickerView(selectedColor: $selectedColor).onChange(of: selectedColor){ newColor in
+                                    currentLine.color = newColor
+                                }
+                            }
+                            .padding(10)
+                            .background(Constants.ColorPalette.whitesmoke)
+                            .clipShape(Capsule())
+                            
+                            
+                            Button(action: {
+                                self.lines = []
+                                self.currentLine = Line(points: [], color: selectedColor, lineWidth: thickness)
+                            }){
+                                Text("Clear")
+                                    .font(.system(.title2, design: .rounded))
+                                    .fontWeight(.bold)
+                            }
+                            .padding(10)
+                            .background(Constants.ColorPalette.whitesmoke)
+                            .clipShape(Capsule())
                         }
-                        .frame(height: 30)
-                        .padding(10)
-                        .background(Color.green)
-                        .clipShape(Capsule())
                         
+                        
+                        HStack(alignment: .center) {
+                            TextField("Drop Your Answer Here", text: self.$answerField)
+                                .onSubmit {
+                                    
+                                    if(currentQuestion.answer == answerField.lowercased()){
+                                        print("Answer True")
+                                    }else{
+                                        print("Answer False")
+                                    }
+                                    self.indexQuestion += 1
+                                    self.lines = []
+                                }
+                                .frame(width: reader.size.width * 0.4, height: 30)
+                                .padding(10)
+                                .background(Constants.ColorPalette.whitesmoke)
+                                .clipShape(Capsule())
+                            
+                            Button(action: {
+                                if(currentQuestion.answer == answerField.lowercased()){
+                                    print("Answer True")
+                                }else{
+                                    print("Answer False")
+                                }
+                                self.indexQuestion += 1
+                                self.lines = []
+                            }){
+                                Text("Submit")
+                                    .font(.system(.title2, design: .rounded))
+                                    .foregroundColor(.white)
+                                    .fontWeight(.bold)
+                            }
+                            .frame(height: 30)
+                            .padding(10)
+                            .background(Color.green)
+                            .clipShape(Capsule())
+                            
+                        }
+                            
                     }
-                        
+                    .ignoresSafeArea()
+                    .navigationTitle("Guest it Quiz")
                 }
-                .ignoresSafeArea()
-                .navigationTitle("Guest it Quiz")
             }
         }}
     
