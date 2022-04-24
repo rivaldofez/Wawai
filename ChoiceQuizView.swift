@@ -12,7 +12,9 @@ struct ChoiceQuizView: View {
     @State var score : Int = 0
     @State var showingAlertFinish = false
     @Binding var isShow: Bool
-    
+    @AppStorage("level") private var level: Int = 0
+    @AppStorage("played") private var played: Int = 0
+    @AppStorage("coin")  private var coin: Int = 0
     
     
     var body: some View {
@@ -69,7 +71,13 @@ struct ChoiceQuizView: View {
             .navigationTitle("Multiple Choice Quiz")
             .ignoresSafeArea()
             .alert(isPresented: self.$showingAlertFinish){
-                Alert(title: Text("Congratulations !"), message: Text("You got \(score) Siger Coins"),dismissButton: .default(Text("OK"),action: {self.isShow = false}))
+                Alert(title: Text("Congratulations !"), message: Text("You got \(score) Siger Coins"),dismissButton: .default(Text("OK"),action: {
+                    self.coin += score
+                    self.level += score/5
+                    self.played += 1
+                    self.isShow = false
+                }
+                                                                                                                             ))
             }
         }
     }

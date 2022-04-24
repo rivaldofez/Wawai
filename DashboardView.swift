@@ -13,6 +13,9 @@ struct DashboardView: View {
     @State private var showQuizView = false
     @State private var showDrawingQuizView = false
     @State private var showShopView = false
+    @AppStorage("level") private var level: Int = 0
+    @AppStorage("played") private var played: Int = 0
+    @AppStorage("coin")  private var coin: Int = 0
     
     var body: some View {
         GeometryReader{reader in
@@ -28,11 +31,11 @@ struct DashboardView: View {
                     
                     HStack {
                         Spacer()
-                        CardDashboardItem(image: "star.fill", title: "Level.", value: 1)
+                        CardDashboardItem(image: "star.fill", title: "Level.", value: level)
                         Spacer()
-                        CardDashboardItem(image: "gamecontroller.fill", title: "Played.", value: 0)
+                        CardDashboardItem(image: "gamecontroller.fill", title: "Played.", value: played)
                         Spacer()
-                        CardDashboardItem(image: "florinsign.circle.fill", title: "Coin.", value: 0)
+                        CardDashboardItem(image: "florinsign.circle.fill", title: "Coin.", value: coin)
                         Spacer()
                     }
                     Spacer()
@@ -98,13 +101,14 @@ struct CardExploreItem: View {
             
             VStack {
                 Text(title)
-                    .font(.system(size: 30, weight: .regular, design: .rounded))
+                    .font(.system(size: 30, weight: .bold, design: .rounded))
+                    .foregroundColor(Color.black)
             }.padding()
             Spacer()
     }
-    .background(Constants.ColorPalette.choco)
-        .foregroundColor(Constants.ColorPalette.khaki)
+        .background(Constants.ColorPalette.gainsboro)
         .clipShape(Capsule())
+        .shadow(color: Constants.ColorPalette.silver, radius: 5, x: 3, y: 2)
         .padding()
     }
 }

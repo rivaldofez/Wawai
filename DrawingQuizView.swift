@@ -18,8 +18,10 @@ struct DrawingQuizView: View {
     @State private var showingAlertFinish = false
     @State private var showingAlertScratchEmpty = false
     @State private var score = 0
+    @AppStorage("level") private var level: Int = 0
+    @AppStorage("played") private var played: Int = 0
+    @AppStorage("coin")  private var coin: Int = 0
     @Binding var isShow: Bool
-    
     @State var indexQuestion: Int = 0
     
     
@@ -110,7 +112,14 @@ struct DrawingQuizView: View {
                             .clipShape(Capsule())
                         }
                         .alert(isPresented: self.$showingAlertFinish){
-                            Alert(title: Text("Congratulations !"), message: Text("You got \(score) Siger Coins"),dismissButton: .default(Text("OK"),action: {self.isShow = false}))
+                            Alert(title: Text("Congratulations !"), message: Text("You got \(score) Siger Coins"),dismissButton: .default(Text("OK"),action: {
+                                self.coin += score
+                                self.level += score/self.level
+                                self.played += 1
+                                self.isShow = false
+                                
+                                
+                            }))
                         }
                         
                         
@@ -151,7 +160,7 @@ struct DrawingQuizView: View {
                                     self.lines.removeAll()
                                     self.answerField = ""
                                 }
-
+                                
                             }){
                                 Text("Submit")
                                     .font(.system(.title2, design: .rounded))
@@ -166,7 +175,7 @@ struct DrawingQuizView: View {
                         .alert(isPresented: self.$showingAlertScratchEmpty){
                             Alert(title: Text("Your Canvas is Empty"), message: Text("you haven't scratch yet"))
                         }
-                            
+                        
                     }
                     
                 }

@@ -15,7 +15,9 @@ struct ExerciseCharacterView: View {
     @State private var thickness: Double = 5.0
     @State private var showingAlertFinish: Bool = false
     @State private var showingAlertEmpty: Bool = false
-    
+    @AppStorage("level") private var level: Int = 0
+    @AppStorage("played") private var played: Int = 0
+    @AppStorage("coin")  private var coin: Int = 0
     @State var indexQuestion : Int = 0
     @State var score : Int = 0
     
@@ -102,7 +104,13 @@ struct ExerciseCharacterView: View {
                         .clipShape(Capsule())
                     }
                     .alert(isPresented: self.$showingAlertFinish){
-                        Alert(title: Text("Congratulation !"), message: Text("You got 1 Siger Coins"),dismissButton: .default(Text("OK"),action: {self.isShow = false}))
+                        Alert(title: Text("Congratulation !"), message: Text("You got 1 Siger Coins"),dismissButton: .default(Text("OK"),action: {
+                            self.coin += 1
+                            self.level += score/self.level
+                            self.played += 1
+                            self.isShow = false
+                            
+                        }))
                     }
                     
                     Button(action:{
