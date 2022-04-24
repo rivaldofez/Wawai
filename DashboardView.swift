@@ -71,11 +71,7 @@ struct DashboardView: View {
                             CardExploreItem(image: "scratch", title: "Guest it Game")
                         }
                     }
-                    
-                    
                     Spacer()
-                   
-                       
                 }
             }.ignoresSafeArea()
         }

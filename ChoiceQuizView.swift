@@ -10,7 +10,9 @@ struct ChoiceQuizView: View {
     
     @State var indexQuestion : Int = 0
     @State var score : Int = 0
+    @State var showingAlertFinish = false
     @Binding var isShow: Bool
+    
     
     
     var body: some View {
@@ -40,12 +42,15 @@ struct ChoiceQuizView: View {
                             
                             ForEach(0..<currentQuestion.choice.count, id: \.self) {i in
                                 Button(action: {
-                                    if(i == currentQuestion.answer){
-                                        print("jawaban benar")
+                                    if( indexQuestion + 1 >= ChoiceQuizQuestionBank().questionList.count){
+                                        self.showingAlertFinish = true
                                     }else{
-                                        print("jawaban salah")
+                                        self.indexQuestion += 1
                                     }
-                                    self.indexQuestion += 1
+                                    
+                                    if(i == currentQuestion.answer){
+                                        self.score += 1
+                                    }
                                     
                                 }){
                                     ChoiceGridItemView(choice: currentQuestion.choice[i])
@@ -56,23 +61,16 @@ struct ChoiceQuizView: View {
                         }
                         .padding(.horizontal)
                         
-                        
-                        Button(action:{
-                            self.indexQuestion += 1
-                        }){
-                            Text("Next")
-                        }
-                        
                         Spacer()
                     }
                     .animation(.easeIn, value: true)
                 }
-                else{
-                    Text("Halaman Score")
-                }
             }
             .navigationTitle("Multiple Choice Quiz")
             .ignoresSafeArea()
+            .alert(isPresented: self.$showingAlertFinish){
+                Alert(title: Text("Congratulations !"), message: Text("You got \(score) Siger Coins"),dismissButton: .default(Text("OK"),action: {self.isShow = false}))
+            }
         }
     }
 }
