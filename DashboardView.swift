@@ -23,16 +23,16 @@ struct DashboardView: View {
                 VStack {
                     Spacer()
                     
-                    Text("Dashboard")
+                    Text("Summary")
                         .font(.system(size: 40, weight: .bold, design: .rounded))
                     
                     HStack {
                         Spacer()
-                        CardDashboardItem(image: "star.fill", title: "Level.", value: 100)
+                        CardDashboardItem(image: "star.fill", title: "Level.", value: 1)
                         Spacer()
-                        CardDashboardItem(image: "gamecontroller.fill", title: "Played.", value: 10)
+                        CardDashboardItem(image: "gamecontroller.fill", title: "Played.", value: 0)
                         Spacer()
-                        CardDashboardItem(image: "florinsign.circle.fill", title: "Coin.", value: 5000)
+                        CardDashboardItem(image: "florinsign.circle.fill", title: "Coin.", value: 0)
                         Spacer()
                     }
                     Spacer()
@@ -133,10 +133,12 @@ struct CardDashboardItem: View {
                     .font(.system(size: 40, weight: .bold, design: .rounded))
             }
         }
+        .frame(minWidth: 200)
         .padding()
-        .background(Constants.ColorPalette.whitesmoke)
+        .background(Constants.ColorPalette.gainsboro)
         .clipShape(RoundedRectangle(cornerRadius: 20))
-        .shadow(color: Constants.ColorPalette.lightgray, radius: 2, x: 2, y: 1)
+        .shadow(color: Constants.ColorPalette.silver, radius: 2, x: 2, y: 1)
+
     }
 }
 

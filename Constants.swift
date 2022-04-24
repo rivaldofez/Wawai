@@ -16,7 +16,8 @@ struct Constants{
         static let dimgray = Color(red: 111/255, green: 111/255, blue: 111/255)
         static let lightgray = Color(red: 215/255, green: 214/255, blue: 214/255)
         static let choco = Color(red: 152/255, green: 127/255, blue: 85/255)
-        
+        static let gainsboro = Color(red: 223/255, green: 223/255, blue: 223/255)
+        static let silver = Color(red: 185/255, green: 185/255, blue: 185/255)
         static let ch1 = Color(red: 172/255, green: 212/255, blue: 223/255)
         static let ch2 = Color(red: 200/255, green: 213/255, blue: 158/255)
         static let ch3 = Color(red: 224/255, green: 164/255, blue: 139/255)
@@ -174,16 +175,16 @@ class DrawingQuestionBank {
     
     init() {
         questionList.append(contentsOf: [
-            DrawQuiz(img: "ka", answer: "ka"),
-            DrawQuiz(img: "ga", answer: "ga"),
-            DrawQuiz(img: "nga", answer: "nga"),
-            DrawQuiz(img: "pa", answer: "pa"),
-            DrawQuiz(img: "ba", answer: "ba"),
-            DrawQuiz(img: "ma", answer: "ma"),
-            DrawQuiz(img: "ta", answer: "ta"),
-            DrawQuiz(img: "da", answer: "da"),
-            DrawQuiz(img: "na", answer: "na"),
-            DrawQuiz(img: "ca", answer: "ca"),
+            DrawQuiz(img: "q_am", answer: "am"),
+            DrawQuiz(img: "q_is", answer: "is"),
+            DrawQuiz(img: "q_in", answer: "in"),
+            DrawQuiz(img: "q_on", answer: "on"),
+            DrawQuiz(img: "q_be", answer: "be"),
+            DrawQuiz(img: "q_no", answer: "no"),
+            DrawQuiz(img: "q_yes", answer: "yes"),
+            DrawQuiz(img: "q_are", answer: "are"),
+            DrawQuiz(img: "q_hai", answer: "hai"),
+            DrawQuiz(img: "q_gha", answer: "gha"),
         ])
     }
 }
