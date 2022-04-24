@@ -46,7 +46,6 @@ struct ExerciseCharacterView: View {
                             for line in lines {
                                 var path = Path()
                                 path.addLines(line.points)
-                                //                        context.stroke(path, with: .color(line.color), lineWidth: line.lineWidth)
                                 context.stroke(path, with: .color(line.color), style: StrokeStyle(lineWidth: line.lineWidth, lineCap: .round))
                             }
                         }.frame(width: reader.size.width * 0.5, height: reader.size.height * 0.5)
@@ -125,21 +124,9 @@ struct ExerciseCharacterView: View {
                         Alert(title: Text("Your Canvas is Empty"), message: Text("you haven't drawn any character yet"))
                     }
                 }
-                
-                
             }
             .ignoresSafeArea()
             .navigationTitle("Exercise")
         }
     }
 }
-
-//struct ExerciseCharacterView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ExerciseCharacterView(isShow: .constant(true), mainCharacter: <#T##MainCharacterItem#>)
-//    }
-//}
-
-
-
-

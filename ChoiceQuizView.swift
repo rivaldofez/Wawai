@@ -15,7 +15,7 @@ struct ChoiceQuizView: View {
     
     var body: some View {
         let gridColumns = Array(repeating: GridItem(), count: 2)
-
+        
         GeometryReader{reader in
             ZStack {
                 Image("back")
@@ -51,7 +51,7 @@ struct ChoiceQuizView: View {
                                     ChoiceGridItemView(choice: currentQuestion.choice[i])
                                 }
                                 .buttonStyle(ChoiceGridButtonStyle(cornerRadius: 20))
-                            
+                                
                             }
                         }
                         .padding(.horizontal)
@@ -97,7 +97,6 @@ struct ChoiceGridItemView: View {
     let choice : ChoiceItem
     var body: some View {
         GeometryReader { reader in
-            // make the ui more dynamic
             let fontSize = min(reader.size.width * 0.2, 28)
             let imageWidth: CGFloat = min(70, reader.size.width * 0.2)
             
@@ -106,8 +105,6 @@ struct ChoiceGridItemView: View {
                     .resizable()
                     .scaledToFit()
                     .foregroundColor(choice.itemColor)
-//                    .foregroundColor(item.imgColor)
-//                    .shadow(color: Color(UIColor(red: 47/255, green: 47/255, blue: 47/255, alpha: 1)), radius: 1, x: 3, y: 2)
                     .frame(width: imageWidth)
                 
                 Text(choice.text)
@@ -118,17 +115,6 @@ struct ChoiceGridItemView: View {
             .background(Constants.ColorPalette.whitesmoke)
         }
         .frame(height:150)
-//        .overlay(RoundedRectangle(cornerRadius: 50).stroke(Constants.ColorPalette.khaki, lineWidth: 5))
-//        .border(Constants.ColorPalette.khaki, width: 2)
         .clipShape(RoundedRectangle(cornerRadius: 50))
-
-//        .shadow(color: Color.black.opacity(0.2), radius: 10, y: 5)
     }
 }
-
-//struct ChoiceQuizView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChoiceQuizView()
-//    }
-//}
-
