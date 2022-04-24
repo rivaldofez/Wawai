@@ -14,6 +14,10 @@ struct DrawingQuizView: View {
     @State private var selectedColor: Color = .red
     @State private var thickness: Double = 0.0
     @State private var answerField: String = ""
+    @State private var showingAlertEmpty = false
+    @State private var showingAlertFinish = false
+    @State private var showingAlertScratchEmpty = false
+    @State private var score = 0
     @Binding var isShow: Bool
     
     @State var indexQuestion: Int = 0
@@ -61,7 +65,10 @@ struct DrawingQuizView: View {
                                         .scaledToFit()
                                         .frame(width: reader.size.width * 0.5, height: reader.size.width * 0.5)
                                 }
+                        }.alert(isPresented: self.$showingAlertEmpty){
+                            Alert(title: Text("Fill the answer first"), message: Text("you haven't drop your answer yet"))
                         }
+                        
                         
                         HStack {
                             HStack {
@@ -89,6 +96,7 @@ struct DrawingQuizView: View {
                             .clipShape(Capsule())
                             
                             
+                            
                             Button(action: {
                                 self.lines = []
                                 self.currentLine = Line(points: [], color: selectedColor, lineWidth: thickness)
@@ -100,6 +108,9 @@ struct DrawingQuizView: View {
                             .padding(10)
                             .background(Constants.ColorPalette.whitesmoke)
                             .clipShape(Capsule())
+                        }
+                        .alert(isPresented: self.$showingAlertFinish){
+                            Alert(title: Text("Congratulations !"), message: Text("You got \(score) Siger Coins"),dismissButton: .default(Text("OK"),action: {self.isShow = false}))
                         }
                         
                         
@@ -121,13 +132,26 @@ struct DrawingQuizView: View {
                                 .clipShape(Capsule())
                             
                             Button(action: {
-                                if(currentQuestion.answer == answerField.lowercased()){
-                                    print("Answer True")
-                                }else{
-                                    print("Answer False")
+                                if(lines.isEmpty){
+                                    showingAlertScratchEmpty = true
                                 }
-                                self.indexQuestion += 1
-                                self.lines = []
+                                
+                                if(self.answerField == ""){
+                                    self.showingAlertEmpty = true
+                                }
+                                
+                                if(currentQuestion.answer == answerField.lowercased()){
+                                    self.score += 1
+                                }
+                                
+                                if( indexQuestion + 1 >= ChoiceQuizQuestionBank().questionList.count){
+                                    self.showingAlertFinish = true
+                                }else{
+                                    self.indexQuestion += 1
+                                    self.lines.removeAll()
+                                    self.answerField = ""
+                                }
+
                             }){
                                 Text("Submit")
                                     .font(.system(.title2, design: .rounded))
@@ -138,16 +162,17 @@ struct DrawingQuizView: View {
                             .padding(10)
                             .background(Color.green)
                             .clipShape(Capsule())
-                            
+                        }
+                        .alert(isPresented: self.$showingAlertScratchEmpty){
+                            Alert(title: Text("Your Canvas is Empty"), message: Text("you haven't scratch yet"))
                         }
                             
                     }
-                    .ignoresSafeArea()
-                    .navigationTitle("Guest it Quiz")
+                    
                 }
-            }
+            }.ignoresSafeArea()
+                .navigationTitle("Guest it Quiz")
         }}
-    
 }
 
 //struct DrawingQuizView_Previews: PreviewProvider {
