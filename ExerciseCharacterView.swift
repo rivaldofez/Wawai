@@ -116,8 +116,9 @@ struct ExerciseCharacterView: View {
                     .padding(.top)
                 }
                 
-            }.ignoresSafeArea()
-                .navigationTitle("Exercise Character")
+            }
+            .ignoresSafeArea()
+            .navigationTitle("Exercise Character")
         }
     }
 }
