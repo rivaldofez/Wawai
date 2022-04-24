@@ -8,27 +8,27 @@
 import SwiftUI
 struct ChoiceQuizView: View {
     
-    @State var i : Int = 0
+    @State var indexQuestion : Int = 0
     @State var score : Int = 0
     
     
     var body: some View {
         let gridColumns = Array(repeating: GridItem(), count: 2)
-        
+
         GeometryReader{reader in
             ZStack {
                 Image("back")
                     .resizable()
-                
-                if(self.i < ChoiceQuizQuestionBank().questionList.count){
+                if(self.indexQuestion < ChoiceQuizQuestionBank().questionList.count){
+                    let currentQuestion = ChoiceQuizQuestionBank().questionList[indexQuestion]
                     VStack {
                         Spacer()
-                        Image("ka")
+                        Image(currentQuestion.img)
                             .resizable()
                             .scaledToFit()
                             .frame(width: reader.size.width * 0.4, height: reader.size.width * 0.4)
                         
-                        Text("Animal Knowledge Quiz.....")
+                        Text(currentQuestion.question)
                             .font(.system(size: 50, weight: .bold, design: .rounded))
                             .foregroundColor(.black)
                             .padding()
@@ -45,9 +45,11 @@ struct ChoiceQuizView: View {
                         
                         LazyVGrid(columns: gridColumns, spacing: 10) {
                             
-                            ForEach(0..<4, id: \.self) {_ in
-                                Button(action: {}){
-                                    ChoiceGridItemView()
+                            ForEach(0..<currentQuestion.choice.count, id: \.self) {i in
+                                Button(action: {
+                                    print(i)
+                                }){
+                                    ChoiceGridItemView(choice: currentQuestion.choice[i])
                                 }
                                 .buttonStyle(ChoiceGridButtonStyle(cornerRadius: 20))
                             
@@ -57,7 +59,7 @@ struct ChoiceQuizView: View {
                         
                         
                         Button(action:{
-                            self.i += 1
+                            self.indexQuestion += 1
                         }){
                             Text("Next")
                         }
@@ -93,7 +95,7 @@ struct ChoiceGridButtonStyle : ButtonStyle {
 }
 
 struct ChoiceGridItemView: View {
-//    let mainChar : MainCharacterItem
+    let choice : ChoiceItem
     var body: some View {
         GeometryReader { reader in
             // make the ui more dynamic
@@ -101,15 +103,15 @@ struct ChoiceGridItemView: View {
             let imageWidth: CGFloat = min(70, reader.size.width * 0.2)
             
             VStack(spacing: 5){
-                Image(systemName: "a.circle.fill")
+                Image(systemName: choice.img)
                     .resizable()
                     .scaledToFit()
-                    .foregroundColor(Color.blue)
+                    .foregroundColor(choice.itemColor)
 //                    .foregroundColor(item.imgColor)
 //                    .shadow(color: Color(UIColor(red: 47/255, green: 47/255, blue: 47/255, alpha: 1)), radius: 1, x: 3, y: 2)
                     .frame(width: imageWidth)
                 
-                Text("The power of love")
+                Text(choice.text)
                     .font(.system(size: fontSize, weight: .bold, design: .rounded))
                     .foregroundColor(Color.black.opacity(0.9))
             }

@@ -28,7 +28,8 @@ struct ChoiceQuiz {
     let choice : [ChoiceItem]
 }
 
-struct ChoiceItem {
+struct ChoiceItem: Identifiable {
+    let id = UUID()
     let img: String
     let text: String
     let itemColor: Color
