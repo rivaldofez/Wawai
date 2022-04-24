@@ -16,6 +16,13 @@ struct Constants{
         static let dimgray = Color(red: 111/255, green: 111/255, blue: 111/255)
         static let lightgray = Color(red: 215/255, green: 214/255, blue: 214/255)
         static let choco = Color(red: 152/255, green: 127/255, blue: 85/255)
+        
+        static let ch1 = Color(red: 172/255, green: 212/255, blue: 223/255)
+        static let ch2 = Color(red: 200/255, green: 213/255, blue: 158/255)
+        static let ch3 = Color(red: 224/255, green: 164/255, blue: 139/255)
+        static let ch4 = Color(red: 244/255, green: 222/255, blue: 86/255)
+        
+        
     }
     
     struct Icons {
@@ -33,17 +40,18 @@ class SubCharacterBank {
     var subCharacterList = [CharacterItem]()
     init() {
         subCharacterList.append(contentsOf: [
-            CharacterItem(title: "-i", image: "sb_i"),
-            CharacterItem(title: "-u", image: "sb_u"),
-            CharacterItem(title: "-e", image: "sb_e"),
-            CharacterItem(title: "-è", image: "sb_ee"),
-            CharacterItem(title: "-o", image: "sb_o"),
-            CharacterItem(title: "-ai", image: "sb_ai"),
-            CharacterItem(title: "-au", image: "sb_au"),
-            CharacterItem(title: "-r", image: "sb_r"),
-            CharacterItem(title: "-ng", image: "sb_ng"),
-            CharacterItem(title: "-n", image: "sb_n"),
-            CharacterItem(title: "-end", image: "sb_end")
+            CharacterItem(title: "k(-i)", image: "sb_i"),
+            CharacterItem(title: "k(-e)", image: "sb_e"),
+            CharacterItem(title: "k(-è)", image: "sb_ee"),
+            CharacterItem(title: "k(-ar)", image: "sb_r"),
+            CharacterItem(title: "k(-ang)", image: "sb_ng"),
+            CharacterItem(title: "k(-an)", image: "sb_n"),
+            CharacterItem(title: "k(-u)", image: "sb_u"),
+            CharacterItem(title: "k(-o)", image: "sb_o"),
+            CharacterItem(title: "k(-au)", image: "sb_au"),
+            CharacterItem(title: "k(-ai)", image: "sb_ai"),
+            CharacterItem(title: "k(-ah)", image: "sb_ah"),
+            CharacterItem(title: "k", image: "sb_end")
         ])
     }
 }
@@ -96,37 +104,66 @@ class ChoiceQuizQuestionBank {
     
     init() {
         questionList.append(contentsOf: [
-            ChoiceQuiz(img: "ka", question: "Ka adalah......", answer: 0, choice: [
-                ChoiceItem(img: "a.circle.fill", text: "ka memang ", itemColor: Constants.ColorPalette.choco),
-                ChoiceItem(img: "b.circle.fill", text: "kb memang ", itemColor: Constants.ColorPalette.choco),
-                ChoiceItem(img: "c.circle.fill", text: "kc memang ", itemColor: Constants.ColorPalette.choco),
-                ChoiceItem(img: "d.circle.fill", text: "kd memang ", itemColor: Constants.ColorPalette.choco),
+            ChoiceQuiz(img: "q_love", question: "The above character means...", answer: 0, choice: [
+                ChoiceItem(img: "a.circle.fill", text: "love", itemColor: Constants.ColorPalette.ch1),
+                ChoiceItem(img: "b.circle.fill", text: "are", itemColor: Constants.ColorPalette.ch2),
+                ChoiceItem(img: "c.circle.fill", text: "be", itemColor: Constants.ColorPalette.ch3),
+                ChoiceItem(img: "d.circle.fill", text: "the", itemColor: Constants.ColorPalette.ch4),
             ]),
-            ChoiceQuiz(img: "ga", question: "ga adalah......", answer: 1, choice: [
-                ChoiceItem(img: "a.circle.fill", text: "ga memang ", itemColor: Constants.ColorPalette.choco),
-                ChoiceItem(img: "b.circle.fill", text: "gb memang ", itemColor: Constants.ColorPalette.choco),
-                ChoiceItem(img: "c.circle.fill", text: "gc memang ", itemColor: Constants.ColorPalette.choco),
-                ChoiceItem(img: "d.circle.fill", text: "gd memang ", itemColor: Constants.ColorPalette.choco),
+            ChoiceQuiz(img: "q_hai", question: "The above character means...", answer: 1, choice: [
+                ChoiceItem(img: "a.circle.fill", text: "the", itemColor: Constants.ColorPalette.ch1),
+                ChoiceItem(img: "b.circle.fill", text: "hai", itemColor: Constants.ColorPalette.ch2),
+                ChoiceItem(img: "c.circle.fill", text: "be", itemColor: Constants.ColorPalette.ch3),
+                ChoiceItem(img: "d.circle.fill", text: "love", itemColor: Constants.ColorPalette.ch4),
             ]),
-            ChoiceQuiz(img: "ga", question: "ga adalah......", answer: 1, choice: [
-                ChoiceItem(img: "a.circle.fill", text: "ga memang ", itemColor: Constants.ColorPalette.choco),
-                ChoiceItem(img: "b.circle.fill", text: "gb memang ", itemColor: Constants.ColorPalette.choco),
-                ChoiceItem(img: "c.circle.fill", text: "gc memang ", itemColor: Constants.ColorPalette.choco),
-                ChoiceItem(img: "d.circle.fill", text: "gd memang ", itemColor: Constants.ColorPalette.choco),
+            ChoiceQuiz(img: "q_big", question: "The above character means...", answer: 2, choice: [
+                ChoiceItem(img: "a.circle.fill", text: "hai", itemColor: Constants.ColorPalette.ch1),
+                ChoiceItem(img: "b.circle.fill", text: "are", itemColor: Constants.ColorPalette.ch2),
+                ChoiceItem(img: "c.circle.fill", text: "big", itemColor: Constants.ColorPalette.ch3),
+                ChoiceItem(img: "d.circle.fill", text: "the", itemColor: Constants.ColorPalette.ch4),
             ]),
-            ChoiceQuiz(img: "ga", question: "ga adalah......", answer: 1, choice: [
-                ChoiceItem(img: "a.circle.fill", text: "ga memang ", itemColor: Constants.ColorPalette.choco),
-                ChoiceItem(img: "b.circle.fill", text: "gb memang ", itemColor: Constants.ColorPalette.choco),
-                ChoiceItem(img: "c.circle.fill", text: "gc memang ", itemColor: Constants.ColorPalette.choco),
-                ChoiceItem(img: "d.circle.fill", text: "gd memang ", itemColor: Constants.ColorPalette.choco),
+            ChoiceQuiz(img: "q_many", question: "The above character means...", answer: 3, choice: [
+                ChoiceItem(img: "a.circle.fill", text: "big", itemColor: Constants.ColorPalette.ch1),
+                ChoiceItem(img: "b.circle.fill", text: "hai", itemColor: Constants.ColorPalette.ch2),
+                ChoiceItem(img: "c.circle.fill", text: "be", itemColor: Constants.ColorPalette.ch3),
+                ChoiceItem(img: "d.circle.fill", text: "many", itemColor: Constants.ColorPalette.ch4),
             ]),
-            ChoiceQuiz(img: "gha", question: "ckckc adalah......", answer: 1, choice: [
-                ChoiceItem(img: "a.circle.fill", text: "ga memang ", itemColor: Constants.ColorPalette.choco),
-                ChoiceItem(img: "b.circle.fill", text: "gb memang ", itemColor: Constants.ColorPalette.choco),
-                ChoiceItem(img: "c.circle.fill", text: "gc memang ", itemColor: Constants.ColorPalette.choco),
-                ChoiceItem(img: "d.circle.fill", text: "gd memang ", itemColor: Constants.ColorPalette.choco),
-            ])
-            
+            ChoiceQuiz(img: "q_how", question: "The above character means...", answer: 0, choice: [
+                ChoiceItem(img: "a.circle.fill", text: "how", itemColor: Constants.ColorPalette.ch1),
+                ChoiceItem(img: "b.circle.fill", text: "are", itemColor: Constants.ColorPalette.ch2),
+                ChoiceItem(img: "c.circle.fill", text: "you", itemColor: Constants.ColorPalette.ch3),
+                ChoiceItem(img: "d.circle.fill", text: "here", itemColor: Constants.ColorPalette.ch4),
+            ]),
+            ChoiceQuiz(img: "q_care", question: "The above character means...", answer: 1, choice: [
+                ChoiceItem(img: "a.circle.fill", text: "like", itemColor: Constants.ColorPalette.ch1),
+                ChoiceItem(img: "b.circle.fill", text: "care", itemColor: Constants.ColorPalette.ch2),
+                ChoiceItem(img: "c.circle.fill", text: "big", itemColor: Constants.ColorPalette.ch3),
+                ChoiceItem(img: "d.circle.fill", text: "the", itemColor: Constants.ColorPalette.ch4),
+            ]),
+            ChoiceQuiz(img: "q_apple", question: "The above character means...", answer: 2, choice: [
+                ChoiceItem(img: "a.circle.fill", text: "care", itemColor: Constants.ColorPalette.ch1),
+                ChoiceItem(img: "b.circle.fill", text: "how", itemColor: Constants.ColorPalette.ch2),
+                ChoiceItem(img: "c.circle.fill", text: "apple", itemColor: Constants.ColorPalette.ch3),
+                ChoiceItem(img: "d.circle.fill", text: "the", itemColor: Constants.ColorPalette.ch4),
+            ]),
+            ChoiceQuiz(img: "q_yes", question: "The above character means...", answer: 3, choice: [
+                ChoiceItem(img: "a.circle.fill", text: "love", itemColor: Constants.ColorPalette.ch1),
+                ChoiceItem(img: "b.circle.fill", text: "are", itemColor: Constants.ColorPalette.ch2),
+                ChoiceItem(img: "c.circle.fill", text: "be", itemColor: Constants.ColorPalette.ch3),
+                ChoiceItem(img: "d.circle.fill", text: "yes", itemColor: Constants.ColorPalette.ch4),
+            ]),
+            ChoiceQuiz(img: "q_like", question: "The above character means...", answer: 0, choice: [
+                ChoiceItem(img: "a.circle.fill", text: "like", itemColor: Constants.ColorPalette.ch1),
+                ChoiceItem(img: "b.circle.fill", text: "are", itemColor: Constants.ColorPalette.ch2),
+                ChoiceItem(img: "c.circle.fill", text: "we", itemColor: Constants.ColorPalette.ch3),
+                ChoiceItem(img: "d.circle.fill", text: "love", itemColor: Constants.ColorPalette.ch4),
+            ]),
+            ChoiceQuiz(img: "q_no", question: "The above character means...", answer: 1, choice: [
+                ChoiceItem(img: "a.circle.fill", text: "me", itemColor: Constants.ColorPalette.ch1),
+                ChoiceItem(img: "b.circle.fill", text: "no", itemColor: Constants.ColorPalette.ch2),
+                ChoiceItem(img: "c.circle.fill", text: "like", itemColor: Constants.ColorPalette.ch3),
+                ChoiceItem(img: "d.circle.fill", text: "big", itemColor: Constants.ColorPalette.ch4),
+            ]),
         ])
     }
 }
