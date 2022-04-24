@@ -10,6 +10,7 @@ struct ChoiceQuizView: View {
     
     @State var indexQuestion : Int = 0
     @State var score : Int = 0
+    @Binding var isShow: Bool
     
     
     var body: some View {
@@ -125,9 +126,9 @@ struct ChoiceGridItemView: View {
     }
 }
 
-struct ChoiceQuizView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChoiceQuizView()
-    }
-}
+//struct ChoiceQuizView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChoiceQuizView()
+//    }
+//}
 

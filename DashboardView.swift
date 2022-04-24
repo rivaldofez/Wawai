@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct DashboardView: View {
+    @State private var showMainCharacterView = false
+    @State private var showSubCharacterView = false
+    @State private var showQuizView = false
+    @State private var showDrawingQuizView = false
+    @State private var showShopView = false
     
     var body: some View {
         GeometryReader{reader in
@@ -35,11 +40,14 @@ struct DashboardView: View {
                     Text("Explore")
                         .font(.system(size: 40, weight: .bold, design: .rounded))
                     
-                    Button(action:{
-                        
-                    }){
-                        CardExploreItem(image: "ka", title: "Learn Main Character")
+                    NavigationLink(destination: MainCharacterView(isShow: self.$showMainCharacterView), isActive: self.$showMainCharacterView){
+                        Button(action: {
+                            self.showMainCharacterView = true
+                        }){
+                            CardExploreItem(image: "ka", title: "Learn Main Character")
+                        }
                     }
+                    
                     
                     Button(action:{}){
                         CardExploreItem(image: "ga", title: "Learn Sub Character")
@@ -50,11 +58,11 @@ struct DashboardView: View {
                     }
                     
                     Button(action:{}){
-                        CardExploreItem(image: "nga", title: "Guest it")
+                        CardExploreItem(image: "nga", title: "Guest it Game")
                     }
                     
                     Button(action:{}){
-                        CardExploreItem(image: "nga", title: "Guest it")
+                        CardExploreItem(image: "nga", title: "Shop")
                     }
                     
 //                    Spacer()

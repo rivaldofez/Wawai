@@ -14,6 +14,7 @@ struct MainCharacterView: View {
     @State private var showExerciseView = false
     @State private var numOfGridColumns = 4
     @State private var currentChar = MainCharacterBank().mainCharacterList[0]
+    @Binding var isShow : Bool
     
     let gridSpacing: CGFloat = 10
     
@@ -31,17 +32,7 @@ struct MainCharacterView: View {
                     .font(.system(.largeTitle,design: .rounded))
                     .fontWeight(.bold)
                     .padding()
-                //                    NavigationLink(destination: SubCharacterView(), isActive: self.$showSubCharacterView){
-                //                        Button(action:{
-                //                            self.showSubCharacterView = true
-                //                            print(self)
-                //                        }){
-                //                            Text("Next To Lampungnese Sub Character")
-                //                        }.buttonStyle(.bordered)
-                //
-                //                    }
-                //
-                
+
                 LazyVGrid(columns: gridColumns, spacing: gridSpacing) {
                     ForEach(MainCharacterBank().mainCharacterList, id: \.id){ character in
                         NavigationLink(destination: ExerciseCharacterView(isShow: self.$showExerciseView, mainCharacter: currentChar), isActive: self.$showExerciseView){

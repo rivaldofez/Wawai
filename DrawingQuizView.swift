@@ -14,6 +14,7 @@ struct DrawingQuizView: View {
     @State private var selectedColor: Color = .red
     @State private var thickness: Double = 0.0
     @State private var answerField: String = ""
+    @Binding var isShow: Bool
     
     @State var indexQuestion: Int = 0
     
@@ -149,11 +150,11 @@ struct DrawingQuizView: View {
     
 }
 
-struct DrawingQuizView_Previews: PreviewProvider {
-    static var previews: some View {
-        DrawingQuizView()
-    }
-}
+//struct DrawingQuizView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DrawingQuizView()
+//    }
+//}
 
 struct ColorPickerView: View {
     let colors = [Color.red, Color.orange, Color.green, Color.blue, Color.purple]
