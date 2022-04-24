@@ -15,51 +15,66 @@ struct ChoiceQuizView: View {
     var body: some View {
         let gridColumns = Array(repeating: GridItem(), count: 2)
         
-        ZStack {
-            Image("back")
-                .resizable()
-            
-            if(self.i < ChoiceQuizQuestionBank().questionList.count){
-                VStack {
-                    Text("Animal Knowledge Quiz")
-                        .font(.system(size: 30, weight: .bold, design: .rounded))
-                        .foregroundColor(.black)
-                        .shadow(color: Constants.ColorPalette.khaki, radius: 2, x: 0, y: 3)
-                        .padding()
-                    
-                    Text("Apa maksud dari")
-                        .font(.system(size: 25, weight: .bold, design: .rounded))
-                        .foregroundColor(.white)
-                        .shadow(color: .purple, radius: 2, x: 0, y: 3)
-                        .lineLimit(3)
-                        .frame(width: UIScreen.main.bounds.size.width - 20, height: 60, alignment: .center)
-                        .multilineTextAlignment(.center)
-                    
-                    LazyVGrid(columns: gridColumns, spacing: 10) {
+        GeometryReader{reader in
+            ZStack {
+                Image("back")
+                    .resizable()
+                
+                if(self.i < ChoiceQuizQuestionBank().questionList.count){
+                    VStack {
+                        Spacer()
+                        Image("ka")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: reader.size.width * 0.4, height: reader.size.width * 0.4)
                         
-                        ForEach(0..<4, id: \.self) {_ in
-                            Button(action: {}){
-                                ChoiceGridItemView()
+                        Text("Animal Knowledge Quiz.....")
+                            .font(.system(size: 50, weight: .bold, design: .rounded))
+                            .foregroundColor(.black)
+                            .padding()
+                        
+                        Spacer()
+                        
+//                        Text("Apa maksud dari")
+//                            .font(.system(size: 25, weight: .bold, design: .rounded))
+//                            .foregroundColor(.white)
+//                            .shadow(color: .purple, radius: 2, x: 0, y: 3)
+//                            .lineLimit(3)
+//                            .frame(width: UIScreen.main.bounds.size.width - 20, height: 60, alignment: .center)
+//                            .multilineTextAlignment(.center)
+                        
+                        LazyVGrid(columns: gridColumns, spacing: 10) {
+                            
+                            ForEach(0..<4, id: \.self) {_ in
+                                Button(action: {}){
+                                    ChoiceGridItemView()
+                                }
+                                .buttonStyle(ChoiceGridButtonStyle(cornerRadius: 20))
+                            
                             }
-                            .buttonStyle(ChoiceGridButtonStyle(cornerRadius: 20))
-                        
                         }
-                    }
-                    .padding(.horizontal)
-                    
-                    
-                    Button(action:{
-                        self.i += 1
-                    }){
-                        Text("Next")
+                        .padding(.horizontal)
+                        
+                        
+                        Button(action:{
+                            self.i += 1
+                        }){
+                            Text("Next")
+                        }
+                        
+                        Spacer()
                     }
                 }
+                else{
+                    Text("Halaman Score")
+                }
             }
+            .navigationTitle("Multiple Choice Quiz")
+            .navigationBarBackButtonHidden(true)
+            
         }
     }
 }
-
-
 
 struct ChoiceGridButtonStyle : ButtonStyle {
     let cornerRadius: CGFloat
@@ -83,12 +98,13 @@ struct ChoiceGridItemView: View {
         GeometryReader { reader in
             // make the ui more dynamic
             let fontSize = min(reader.size.width * 0.2, 28)
-            let imageWidth: CGFloat = min(100, reader.size.width * 0.6)
+            let imageWidth: CGFloat = min(70, reader.size.width * 0.2)
             
             VStack(spacing: 5){
-                Image("ka")
+                Image(systemName: "a.circle.fill")
                     .resizable()
                     .scaledToFit()
+                    .foregroundColor(Color.blue)
 //                    .foregroundColor(item.imgColor)
 //                    .shadow(color: Color(UIColor(red: 47/255, green: 47/255, blue: 47/255, alpha: 1)), radius: 1, x: 3, y: 2)
                     .frame(width: imageWidth)

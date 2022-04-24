@@ -14,13 +14,6 @@ struct CharacterItem: Identifiable {
     let image: String
 }
 
-struct Choice {
-    let choiceA : String
-    let choiceB : String
-    let choiceC : String
-    let choiceD : String
-}
-
 struct Line {
     var points = [CGPoint]()
     var color: Color = .red
@@ -30,7 +23,14 @@ struct Line {
 
 struct ChoiceQuiz {
     let img: String
-    var question: String
-    var answer: String
-    var choice: Choice
+    let question: String
+    let answer: Int
+    let choice : [ChoiceItem]
 }
+
+struct ChoiceItem {
+    let img: String
+    let text: String
+    let itemColor: Color
+}
+

@@ -96,9 +96,18 @@ class ChoiceQuizQuestionBank {
     
     init() {
         questionList.append(contentsOf: [
-            ChoiceQuiz(img: "ka", question: "Ka adalah", answer: "a", choice: Choice(choiceA: "Ka", choiceB: "Kb", choiceC: "Kc", choiceD: "Kd")),
-            ChoiceQuiz(img: "ga", question: "Ga adalah", answer: "b", choice: Choice(choiceA: "Ka", choiceB: "Kb", choiceC: "Kc", choiceD: "Kd")),
-            ChoiceQuiz(img: "nga", question: "Nga adalah", answer: "c", choice: Choice(choiceA: "Ka", choiceB: "Kb", choiceC: "Kc", choiceD: "Kd"))
+            ChoiceQuiz(img: "ka", question: "Ka adalah......", answer: 0, choice: [
+                ChoiceItem(img: "a.circle.fill", text: "ka memang ", itemColor: Constants.ColorPalette.choco),
+                ChoiceItem(img: "b.circle.fill", text: "kb memang ", itemColor: Constants.ColorPalette.choco),
+                ChoiceItem(img: "c.circle.fill", text: "kc memang ", itemColor: Constants.ColorPalette.choco),
+                ChoiceItem(img: "d.circle.fill", text: "kd memang ", itemColor: Constants.ColorPalette.choco),
+            ]),
+            ChoiceQuiz(img: "ga", question: "ga adalah......", answer: 1, choice: [
+                ChoiceItem(img: "a.circle.fill", text: "ga memang ", itemColor: Constants.ColorPalette.choco),
+                ChoiceItem(img: "b.circle.fill", text: "gb memang ", itemColor: Constants.ColorPalette.choco),
+                ChoiceItem(img: "c.circle.fill", text: "gc memang ", itemColor: Constants.ColorPalette.choco),
+                ChoiceItem(img: "d.circle.fill", text: "gd memang ", itemColor: Constants.ColorPalette.choco),
+            ])
             
         ])
     }
