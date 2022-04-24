@@ -5,7 +5,7 @@ struct ContentView: View {
         NavigationView {
 //            SubCharacterView()
 //            MainCharacterView()
-            DrawingQuizView()
+            DashboardView()
 //            ExerciseCharacterView()
         }.navigationViewStyle(.stack)
     }
