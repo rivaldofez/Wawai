@@ -32,7 +32,7 @@ struct MainCharacterView: View {
                     .font(.system(.largeTitle,design: .rounded))
                     .fontWeight(.bold)
                     .padding()
-
+                
                 LazyVGrid(columns: gridColumns, spacing: gridSpacing) {
                     ForEach(MainCharacterBank().mainCharacterList, id: \.id){ character in
                         NavigationLink(destination: ExerciseCharacterView(isShow: self.$showExerciseView, mainCharacter: currentChar), isActive: self.$showExerciseView){

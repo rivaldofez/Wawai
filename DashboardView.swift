@@ -105,7 +105,7 @@ struct CardExploreItem: View {
                     .foregroundColor(Color.black)
             }.padding()
             Spacer()
-    }
+        }
         .background(Constants.ColorPalette.gainsboro)
         .clipShape(Capsule())
         .shadow(color: Constants.ColorPalette.silver, radius: 5, x: 3, y: 2)
@@ -142,7 +142,7 @@ struct CardDashboardItem: View {
         .background(Constants.ColorPalette.gainsboro)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .shadow(color: Constants.ColorPalette.silver, radius: 2, x: 2, y: 1)
-
+        
     }
 }
 
