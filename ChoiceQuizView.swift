@@ -35,19 +35,17 @@ struct ChoiceQuizView: View {
                         
                         Spacer()
                         
-//                        Text("Apa maksud dari")
-//                            .font(.system(size: 25, weight: .bold, design: .rounded))
-//                            .foregroundColor(.white)
-//                            .shadow(color: .purple, radius: 2, x: 0, y: 3)
-//                            .lineLimit(3)
-//                            .frame(width: UIScreen.main.bounds.size.width - 20, height: 60, alignment: .center)
-//                            .multilineTextAlignment(.center)
-                        
                         LazyVGrid(columns: gridColumns, spacing: 10) {
                             
                             ForEach(0..<currentQuestion.choice.count, id: \.self) {i in
                                 Button(action: {
-                                    print(i)
+                                    if(i == currentQuestion.answer){
+                                        print("jawaban benar")
+                                    }else{
+                                        print("jawaban salah")
+                                    }
+                                    self.indexQuestion += 1
+                                    
                                 }){
                                     ChoiceGridItemView(choice: currentQuestion.choice[i])
                                 }
