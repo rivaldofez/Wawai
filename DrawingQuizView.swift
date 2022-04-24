@@ -35,10 +35,18 @@ struct DrawingQuizView: View {
                 if(self.indexQuestion < DrawingQuestionBank().questionList.count){
                     let currentQuestion = DrawingQuestionBank().questionList[indexQuestion]
                     VStack {
+                        
                         Text("Scratch The Canvas and Guest the Character")
+                            .font(.system(size: 35, weight: .bold, design: .rounded))
+                            .foregroundColor(.black)
+                            .padding()
+                        
+                        Text("\(indexQuestion+1)")
                             .font(.system(size: 30, weight: .bold, design: .rounded))
                             .foregroundColor(.black)
-                            .shadow(color: Constants.ColorPalette.khaki, radius: 2, x: 0, y: 3)
+                            .frame(width: 60, height: 60)
+                            .background(Constants.ColorPalette.khaki)
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
                             .padding()
                         
                         ZStack {
@@ -184,11 +192,6 @@ struct DrawingQuizView: View {
         }}
 }
 
-//struct DrawingQuizView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DrawingQuizView()
-//    }
-//}
 
 struct ColorPickerView: View {
     let colors = [Color.red, Color.orange, Color.green, Color.blue, Color.purple]

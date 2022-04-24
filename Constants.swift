@@ -184,7 +184,7 @@ class DrawingQuestionBank {
             DrawQuiz(img: "q_yes", answer: "yes"),
             DrawQuiz(img: "q_are", answer: "are"),
             DrawQuiz(img: "q_hai", answer: "hai"),
-            DrawQuiz(img: "q_gha", answer: "gha"),
+            DrawQuiz(img: "q_many", answer: "many"),
         ])
     }
 }
