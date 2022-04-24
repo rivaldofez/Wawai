@@ -130,3 +130,23 @@ class ChoiceQuizQuestionBank {
         ])
     }
 }
+
+
+class DrawingQuestionBank {
+    var questionList = [DrawQuiz]()
+    
+    init() {
+        questionList.append(contentsOf: [
+            DrawQuiz(img: "ka", answer: "ka"),
+            DrawQuiz(img: "ga", answer: "ga"),
+            DrawQuiz(img: "nga", answer: "nga"),
+            DrawQuiz(img: "pa", answer: "pa"),
+            DrawQuiz(img: "ba", answer: "ba"),
+            DrawQuiz(img: "ma", answer: "ma"),
+            DrawQuiz(img: "ta", answer: "ta"),
+            DrawQuiz(img: "da", answer: "da"),
+            DrawQuiz(img: "na", answer: "na"),
+            DrawQuiz(img: "ca", answer: "ca"),
+        ])
+    }
+}
