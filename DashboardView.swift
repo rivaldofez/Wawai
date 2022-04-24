@@ -52,7 +52,7 @@ struct DashboardView: View {
                         Button(action: {
                             self.showSubCharacterView = true
                         }){
-                            CardExploreItem(image: "ka", title: "Learn Sub Character")
+                            CardExploreItem(image: "tb_intro", title: "Learn Sub Character")
                         }
                     }
                     
@@ -60,7 +60,7 @@ struct DashboardView: View {
                         Button(action: {
                             self.showQuizView = true
                         }){
-                            CardExploreItem(image: "ka", title: "Play a Quiz")
+                            CardExploreItem(image: "mchoice", title: "Play a Quiz")
                         }
                     }
                     
@@ -68,26 +68,10 @@ struct DashboardView: View {
                         Button(action: {
                             self.showDrawingQuizView = true
                         }){
-                            CardExploreItem(image: "ka", title: "Guest it Game")
+                            CardExploreItem(image: "scratch", title: "Guest it Game")
                         }
                     }
                     
-                    
-//                    Button(action:{}){
-//                        CardExploreItem(image: "ga", title: "Learn Sub Character")
-//                    }
-//
-//                    Button(action:{}){
-//                        CardExploreItem(image: "nga", title: "Play a Quiz")
-//                    }
-//
-//                    Button(action:{}){
-//                        CardExploreItem(image: "nga", title: "Guest it Game")
-//                    }
-//
-//                    Button(action:{}){
-//                        CardExploreItem(image: "nga", title: "Shop")
-//                    }
                     
                     Spacer()
                    
@@ -108,6 +92,7 @@ struct CardExploreItem: View {
             Image(image)
                 .resizable()
                 .scaledToFit()
+                .padding(5)
                 .frame(width: 70, height: 70)
                 .padding()
                 .background(Constants.ColorPalette.deepgray)
