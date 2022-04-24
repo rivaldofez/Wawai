@@ -64,6 +64,7 @@ struct ChoiceQuizView: View {
                         
                         Spacer()
                     }
+                    .animation(.easeIn, value: true)
                 }
                 else{
                     Text("Halaman Score")
@@ -71,6 +72,7 @@ struct ChoiceQuizView: View {
             }
             .navigationTitle("Multiple Choice Quiz")
             .navigationBarBackButtonHidden(true)
+            
             
         }
     }

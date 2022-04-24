@@ -107,6 +107,24 @@ class ChoiceQuizQuestionBank {
                 ChoiceItem(img: "b.circle.fill", text: "gb memang ", itemColor: Constants.ColorPalette.choco),
                 ChoiceItem(img: "c.circle.fill", text: "gc memang ", itemColor: Constants.ColorPalette.choco),
                 ChoiceItem(img: "d.circle.fill", text: "gd memang ", itemColor: Constants.ColorPalette.choco),
+            ]),
+            ChoiceQuiz(img: "ga", question: "ga adalah......", answer: 1, choice: [
+                ChoiceItem(img: "a.circle.fill", text: "ga memang ", itemColor: Constants.ColorPalette.choco),
+                ChoiceItem(img: "b.circle.fill", text: "gb memang ", itemColor: Constants.ColorPalette.choco),
+                ChoiceItem(img: "c.circle.fill", text: "gc memang ", itemColor: Constants.ColorPalette.choco),
+                ChoiceItem(img: "d.circle.fill", text: "gd memang ", itemColor: Constants.ColorPalette.choco),
+            ]),
+            ChoiceQuiz(img: "ga", question: "ga adalah......", answer: 1, choice: [
+                ChoiceItem(img: "a.circle.fill", text: "ga memang ", itemColor: Constants.ColorPalette.choco),
+                ChoiceItem(img: "b.circle.fill", text: "gb memang ", itemColor: Constants.ColorPalette.choco),
+                ChoiceItem(img: "c.circle.fill", text: "gc memang ", itemColor: Constants.ColorPalette.choco),
+                ChoiceItem(img: "d.circle.fill", text: "gd memang ", itemColor: Constants.ColorPalette.choco),
+            ]),
+            ChoiceQuiz(img: "ga", question: "ga adalah......", answer: 1, choice: [
+                ChoiceItem(img: "a.circle.fill", text: "ga memang ", itemColor: Constants.ColorPalette.choco),
+                ChoiceItem(img: "b.circle.fill", text: "gb memang ", itemColor: Constants.ColorPalette.choco),
+                ChoiceItem(img: "c.circle.fill", text: "gc memang ", itemColor: Constants.ColorPalette.choco),
+                ChoiceItem(img: "d.circle.fill", text: "gd memang ", itemColor: Constants.ColorPalette.choco),
             ])
             
         ])
