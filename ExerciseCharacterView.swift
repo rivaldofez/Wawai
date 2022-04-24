@@ -13,6 +13,8 @@ struct ExerciseCharacterView: View {
     @State private var lines: [Line] = []
     @State private var selectedColor: Color = .red
     @State private var thickness: Double = 5.0
+    @State private var showingAlertFinish: Bool = false
+    @State private var showingAlertEmpty: Bool = false
     
     @State var indexQuestion : Int = 0
     @State var score : Int = 0
@@ -100,9 +102,16 @@ struct ExerciseCharacterView: View {
                         .background(Constants.ColorPalette.whitesmoke)
                         .clipShape(Capsule())
                     }
+                    .alert(isPresented: self.$showingAlertFinish){
+                        Alert(title: Text("Congratulation !"), message: Text("You got 1 Siger Coins"),dismissButton: .default(Text("OK"),action: {self.isShow = false}))
+                    }
                     
                     Button(action:{
-                        self.isShow = false
+                        if(lines.isEmpty){
+                            self.showingAlertEmpty = true
+                        }else{
+                            self.showingAlertFinish = true
+                        }
                     }){
                         Text("Finish Drawing")
                             .font(.system(size: 30, weight: .bold, design: .rounded))
@@ -112,11 +121,15 @@ struct ExerciseCharacterView: View {
                     .background(Color.green)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                     .padding(.top)
+                    .alert(isPresented: self.$showingAlertEmpty){
+                        Alert(title: Text("Your Canvas is Empty"), message: Text("you haven't drawn any character yet"))
+                    }
                 }
+                
                 
             }
             .ignoresSafeArea()
-            .navigationTitle("Exercise Character")
+            .navigationTitle("Exercise")
         }
     }
 }
