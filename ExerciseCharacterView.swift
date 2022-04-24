@@ -33,9 +33,8 @@ struct ExerciseCharacterView: View {
                 
                 VStack {
                     Text("Draw \"\(mainCharacter.title)\" Character")
-                        .font(.system(size: 30, weight: .bold, design: .rounded))
+                        .font(.system(size: 35, weight: .bold, design: .rounded))
                         .foregroundColor(.black)
-                        .shadow(color: Constants.ColorPalette.khaki, radius: 2, x: 0, y: 3)
                         .padding()
                     
                     ZStack {

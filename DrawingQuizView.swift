@@ -183,9 +183,7 @@ struct DrawingQuizView: View {
                         .alert(isPresented: self.$showingAlertScratchEmpty){
                             Alert(title: Text("Your Canvas is Empty"), message: Text("you haven't scratch yet"))
                         }
-                        
                     }
-                    
                 }
             }.ignoresSafeArea()
                 .navigationTitle("Guest it Quiz")

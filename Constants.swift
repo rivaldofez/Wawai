@@ -52,7 +52,7 @@ class SubCharacterBank {
             CharacterItem(title: "k(-au)", image: "sb_au"),
             CharacterItem(title: "k(-ai)", image: "sb_ai"),
             CharacterItem(title: "k(-ah)", image: "sb_ah"),
-            CharacterItem(title: "k", image: "sb_end")
+            CharacterItem(title: "k(-consonant)", image: "sb_end")
         ])
     }
 }
