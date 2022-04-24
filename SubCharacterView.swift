@@ -11,6 +11,7 @@ import SwiftUI
 struct SubCharacterView: View {
     @State private var showExerciseView = false
     @State private var currentChar = MainCharacterBank().mainCharacterList[0]
+    @Binding var isShow: Bool
     
     var body: some View {
         let gridColumns = Array(repeating: GridItem(), count: 3)
@@ -20,7 +21,7 @@ struct SubCharacterView: View {
             
             VStack {
                 Spacer()
-                Text("Lampungnese Main Character")
+                Text("Lampungnese Sub Character")
                     .font(.system(.largeTitle,design: .rounded))
                     .fontWeight(.bold)
                     .padding()
@@ -44,7 +45,7 @@ struct SubCharacterView: View {
                 
                 Spacer()
                 
-                Text("Lampungnese Main Character")
+                Text("Lampungnese Punctuation")
                     .font(.system(.largeTitle,design: .rounded))
                     .fontWeight(.bold)
                     .padding()
@@ -71,14 +72,6 @@ struct SubCharacterView: View {
         
     }
 }
-
-struct SubCharacterView_Previews: PreviewProvider {
-    static var previews: some View {
-        SubCharacterView()
-    }
-}
-
-
 
 
 

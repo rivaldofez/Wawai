@@ -45,7 +45,6 @@ struct MainCharacterView: View {
                             }
                             .buttonStyle(GridButtonStyle(cornerRadius: 20))
                         }
-                        
                     }
                 }
                 .padding(.horizontal)

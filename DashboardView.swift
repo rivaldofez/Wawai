@@ -48,24 +48,48 @@ struct DashboardView: View {
                         }
                     }
                     
-                    
-                    Button(action:{}){
-                        CardExploreItem(image: "ga", title: "Learn Sub Character")
+                    NavigationLink(destination: SubCharacterView(isShow: self.$showSubCharacterView), isActive: self.$showSubCharacterView){
+                        Button(action: {
+                            self.showSubCharacterView = true
+                        }){
+                            CardExploreItem(image: "ka", title: "Learn Sub Character")
+                        }
                     }
                     
-                    Button(action:{}){
-                        CardExploreItem(image: "nga", title: "Play a Quiz")
+                    NavigationLink(destination: ChoiceQuizView(isShow: self.$showQuizView), isActive: self.$showQuizView){
+                        Button(action: {
+                            self.showQuizView = true
+                        }){
+                            CardExploreItem(image: "ka", title: "Play a Quiz")
+                        }
                     }
                     
-                    Button(action:{}){
-                        CardExploreItem(image: "nga", title: "Guest it Game")
+                    NavigationLink(destination: DrawingQuizView(isShow: self.$showDrawingQuizView), isActive: self.$showDrawingQuizView){
+                        Button(action: {
+                            self.showDrawingQuizView = true
+                        }){
+                            CardExploreItem(image: "ka", title: "Guest it Game")
+                        }
                     }
                     
-                    Button(action:{}){
-                        CardExploreItem(image: "nga", title: "Shop")
-                    }
                     
-//                    Spacer()
+//                    Button(action:{}){
+//                        CardExploreItem(image: "ga", title: "Learn Sub Character")
+//                    }
+//
+//                    Button(action:{}){
+//                        CardExploreItem(image: "nga", title: "Play a Quiz")
+//                    }
+//
+//                    Button(action:{}){
+//                        CardExploreItem(image: "nga", title: "Guest it Game")
+//                    }
+//
+//                    Button(action:{}){
+//                        CardExploreItem(image: "nga", title: "Shop")
+//                    }
+                    
+                    Spacer()
                    
                        
                 }
