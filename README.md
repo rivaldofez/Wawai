@@ -12,10 +12,10 @@
 <br />
 <div align="center">
   <a href="https://github.com/rivaldofez/Wawai">
-    <img src="images/logo.png" alt="Logo" height="80">
+    <img src="images/logo.png" alt="Logo"height="80">
   </a>
 
-  <h3 align="center">Simple Apps to Learn Lampungnese Character</h3>
+  <h3 align="center">Simple Way To Learn Lampung Script</h3>
   </br>
 </div>
 
@@ -49,7 +49,20 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Product Name Screen Shot][product-screenshot]
+<p align="middle">
+  <img src="images/image_1.png" width="200" />
+  <img src="images/image_2.png" width="200" />
+  <img src="images/image_3.png" width="200" />
+  <img src="images/image_4.png" width="200" />
+  <img src="images/image_5.png" width="200" />
+  <img src="images/image_6.png" width="200" />
+  <img src="images/image_7.png" width="200" />
+  <img src="images/image_8.png" width="200" />
+  <img src="images/image_9.png" width="200" />
+  <img src="images/image_10.png" width="200" />
+  <img src="images/image_11.png" width="200" />
+  <img src="images/image_12.png" width="200" />
+</p>
 
 Wawai is an apps built with Swift Playground, this apps can run both on iPad and iPhone. Wawai is a platform for people to learn Lampungnese Character in easy way, just like you playing a game.
 
@@ -60,7 +73,7 @@ This apps built with
 
 * [XCode](https://developer.apple.com/xcode/)
 * [Swift](https://developer.apple.com/swift/)
-* [SwiftUI](https://developer.apple.com/xcode/swiftui/)
+* [SwiftUI](https://developer.apple.com/documentation/swiftui)
 * [Swift Playgrounds](https://www.apple.com/swift/playgrounds/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -70,7 +83,7 @@ This apps built with
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To copy this project, you must have XCode or Swift Playground to open and build copy of the project cloned via github
+To copy this project, you must have XCode to open and build copy of the project cloned via github
 
 ### Prerequisites
 
@@ -84,7 +97,7 @@ Clone repository using git
 
 Installation steps
 
-1. Download and setup your XCode / Swift Playground from AppStore
+1. Download and setup your XCode from AppStore
 2. Load the project and build
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -109,7 +122,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 <!-- CONTACT -->
 ## Contact
 
-Rivaldo Fernandes - [@rivaldofez](https://twitter.com/rivaldofez) - rivaldofez@gmail.com
+Rivaldo Fernandes - [@rivaldofez](https://Wawai.com/rivaldofez) - rivaldofez@gmail.com
 
 Project Link: [https://github.com/rivaldofez/Wawai](https://github.com/rivaldofez/Wawai)
 
@@ -134,9 +147,9 @@ This apps in one of my Submission on WWDC Student Challenge 2022
 
 [stars-shield]: https://img.shields.io/github/stars/rivaldofez/Wawai.svg?style=for-the-badge
 
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
+[stars-url]: https://github.com/rivaldofez/Wawai/stargazers
 
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/rivaldofez/Wawai.svg?style=for-the-badge
 
 [issues-url]: https://github.com/rivaldofez/Wawai/issues
 
@@ -147,6 +160,3 @@ This apps in one of my Submission on WWDC Student Challenge 2022
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 
 [linkedin-url]: https://www.linkedin.com/in/rivaldofez
-
-[product-screenshot]: images/SS04.png
-
